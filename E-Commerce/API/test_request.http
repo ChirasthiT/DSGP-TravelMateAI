@@ -1,0 +1,9 @@
+POST http://127.0.0.1:8000/recommend/
+Content-Type: application/json
+
+{
+    "user_interaction_data": {
+        "prices": [9000, 1500, 1200]
+    },
+    "keywords": "solar"
+}
