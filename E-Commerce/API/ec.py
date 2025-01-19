@@ -5,8 +5,7 @@ from sklearn.cluster import KMeans
 from sklearn.preprocessing import MinMaxScaler
 import re
 import pickle
-from gensim.models import KeyedVectors
-from gensim import downloader
+
 
 class ProductRecommender:
     def __init__(self, n_clusters=3, max_features=100):
@@ -93,18 +92,5 @@ class ProductRecommender:
         input_text = re.sub(r'[^a-z\s]', '', input_text.lower())
         stopwords = set(['the', 'a', 'an', 'and', 'in', 'on', 'at', 'to', 'of', 'for', 'during', 'is', 'was'])
         keywords = [word for word in input_text.split() if word not in stopwords]
-
-        # Now find synonyms for each keyword using Word2Vec
-        enhanced_keywords = set(keywords)
-        for keyword in keywords:
-            try:
-                # Find similar words for each keyword
-                similar_words = self.word_vectors.most_similar(keyword, topn=3)  # Get top 3 similar words
-                for word, similarity in similar_words:
-                    enhanced_keywords.add(word)
-            except KeyError:
-                # If the word is not in the Word2Vec vocabulary, skip it
-                pass
-
-        return list(enhanced_keywords)
+        return list(keywords)
 
