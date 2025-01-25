@@ -43,14 +43,18 @@ def identify():
 
     prediction = image_identifier.predict(image_data)
     print(prediction)
+
     mongo = li_blueprint.mongo
-    location_info = mongo.db.locations.find_one({'name': prediction['prediction']})
+    location_info = (mongo.travelmateai.location_info.find_one({'name': prediction['prediction']}))
 
     if location_info:
         return jsonify({
             'name': location_info['name'],
-            'description': location_info['description'],
-            'image_url': location_info['image_url']
+            'historical_info': location_info['historical_info'],
+            'fun_facts': location_info['fun_facts'],
+            'image_url': location_info['image_file'],
+            'nearby_locations': location_info['nearby_locations'],
+            'title': location_info['title']
         })
     return jsonify({'error': 'Location not found'}), 404
 
