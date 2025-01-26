@@ -92,4 +92,5 @@ class ProductRecommender:
         input_text = re.sub(r'[^a-z\s]', '', input_text.lower())
         stopwords = set(['the', 'a', 'an', 'and', 'in', 'on', 'at', 'to', 'of', 'for', 'during', 'is', 'was'])
         keywords = [word for word in input_text.split() if word not in stopwords]
-        return keywords
+        return list(keywords)
+

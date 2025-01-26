@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Recommendations</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container my-5">
+        <h1 class="text-center">Product Recommendation System</h1>
+
+        <!-- Search Box to input product keywords -->
+        <div class="row justify-content-center my-4">
+            <div class="col-md-6">
+                <div class="input-group">
+                    <input type="text" id="searchBox" class="form-control" placeholder="Enter keywords (e.g., waterproof, phone)">
+                    <button class="btn btn-primary" onclick="generateRec()">Search</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Display Recommendations -->
+        <div id="recommendation" class="mt-4"></div>
+    </div>
+
+    <script>
+        async function generateRec() {
+            try {
+
+                //search keyword from the input box
+                const searchQuery = document.getElementById('searchBox').value.trim();
+
+                //if search box is empty
+                if (!searchQuery) {
+                    throw new Error("Please enter a keyword to search.");
+                }
+
+                // Sending the search query as a query parameter in the GET request
+                const response = await fetch(`/recommend?keywords=${encodeURIComponent(searchQuery)}`, {
+                    method: 'GET'
+                });
+
+                // Check if the response is OK
+                if (!response.ok) {
+                    throw new Error(`Error: ${response.status} - ${response.statusText}`);
+                }
+
+                const data = await response.json();
+                if (!data.recommendations || data.recommendations.length === 0) {
+                    throw new Error("No recommendations found.");
+                }
+
+                let recommendationsList = "<div class='list-group'>";
+                data.recommendations.forEach(product => {
+                    recommendationsList += `
+                        <div class="list-group-item">
+                            <h5 class="mb-1">${product.name}</h5>
+                            <p class="mb-1">${product.description}</p>
+                            <small>Price: $${product.price}</small>
+                        </div>
+                    `;
+                });
+                recommendationsList += "</div>";
+
+                document.getElementById('recommendation').innerHTML = recommendationsList;
+            } catch (error) {
+                document.getElementById('recommendation').innerHTML = `
+                    <div class="alert alert-danger">${error.message}</div>
+                `;
+            }
+        }
+    </script>
+
+    </script>
+
+</body>
+</html>

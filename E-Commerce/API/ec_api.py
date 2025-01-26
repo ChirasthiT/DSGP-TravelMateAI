@@ -1,7 +1,7 @@
 from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
 import pandas as pd
-from ec import ProductRecommender
+from product_recommender import ProductRecommender
 
 app = FastAPI()
 
@@ -58,12 +58,5 @@ def recommend_products(request: RecommendationRequest):
         raise HTTPException(status_code=404, detail="No recommendations found")
 
     return recommendations.to_dict(orient="records")
-
-
-@app.get("/")
-def read_root():
-    return {"message": "Welcome to the Product Recommendation API!"}
-
-#python -m uvicorn ec_api:app --reload
 
 
