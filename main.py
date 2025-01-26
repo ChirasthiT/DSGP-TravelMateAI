@@ -1,15 +1,14 @@
 from flask import Flask, render_template
-from flask_pymongo import PyMongo
+from pymongo import MongoClient
 from Location_Identification.li import li_blueprint
 
 app = Flask(__name__, template_folder='templates', static_folder='static')
-
-app.config['MONGO_URI'] = 'mongodb+srv://admin:<admindsgp66>@dsgp.e5yrm.mongodb.net/?retryWrites=true&w=majority&appName=DSGP'
-
-# MongoDB Initialization
-mongo = PyMongo(app)
 app.register_blueprint(li_blueprint, url_prefix='/location-identification')
-li_blueprint.mongo = mongo
+
+client = MongoClient('mongodb+srv://admin:admindsgp66@dsgp.e5yrm.mongodb.net/')
+db = client['travelmateai']
+
+li_blueprint.db = db
 
 @app.route('/')
 def home():
