@@ -2,7 +2,6 @@ from flask import Blueprint, request, jsonify, render_template
 from werkzeug.utils import secure_filename
 import os
 from Location_Identification.API.image_indentification import Image_Identification
-from flask_pymongo import PyMongo
 
 # Blueprint Setup
 li_blueprint = Blueprint('li', __name__, template_folder='templates', static_folder='static')
@@ -42,13 +41,14 @@ def identify():
         image_data = img_file.read()
 
     prediction = image_identifier.predict(image_data)
-    print(prediction)
 
-    mongo = li_blueprint.mongo
-    location_info = (mongo.travelmateai.location_info.find_one({'name': prediction['prediction']}))
+    db = li_blueprint.db
+    collection = db['location_info']
+    location_info = collection.find_one({'name': prediction})
 
     if location_info:
         return jsonify({
+            'prediction': prediction,
             'name': location_info['name'],
             'historical_info': location_info['historical_info'],
             'fun_facts': location_info['fun_facts'],
