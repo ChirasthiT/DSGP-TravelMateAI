@@ -42,6 +42,9 @@ def identify():
 
     prediction = image_identifier.predict(image_data)
 
+    if prediction == 'Unknown':
+        return jsonify({'error': 'Location not found'}), 404
+
     db = li_blueprint.db
     collection = db['location_info']
     location_info = collection.find_one({'name': prediction})

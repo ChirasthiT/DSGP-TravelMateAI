@@ -1,0 +1,217 @@
+.frame {
+  background-color: #ffffff;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 100%;
+}
+
+.frame .overlap-group-wrapper {
+  background-color: #ffffff;
+  width: 1295px;
+  height: 1920px;
+}
+
+.frame .overlap-group {
+  position: relative;
+  height: 1923px;
+  top: -3px;
+}
+
+.frame .background-mask {
+  position: absolute;
+  width: 1295px;
+  height: 1920px;
+  top: 0;
+  left: 0;
+  background-color: #a5a5a5;
+}
+
+.frame .image {
+  position: absolute;
+  width: 1295px;
+  height: 1920px;
+  top: 3px;
+  left: 0;
+  object-fit: cover;
+}
+
+.frame .travelmate-AI {
+  position: absolute;
+  width: 915px;
+  height: 108px;
+  top: 435px;
+  left: 170px;
+}
+
+.frame .text-wrapper {
+  position: absolute;
+  width: 807px;
+  top: 333px;
+  left: 228px;
+  font-family: "Inter-Black", Helvetica;
+  font-weight: 900;
+  color: #000000;
+  font-size: 48px;
+  text-align: center;
+  letter-spacing: 0;
+  line-height: 28px;
+}
+
+.frame .logo {
+  position: absolute;
+  width: 439px;
+  height: 84px;
+  top: 63px;
+  left: 42px;
+}
+
+.frame .div {
+  position: absolute;
+  width: 437px;
+  top: 0;
+  left: 0;
+  font-family: "Plus Jakarta Sans-ExtraBold", Helvetica;
+  font-weight: 800;
+  color: var(--gray-900);
+  font-size: 48px;
+  letter-spacing: 3.00px;
+  line-height: 30px;
+}
+
+.frame .buttons {
+  position: absolute;
+  width: 668px;
+  height: 118px;
+  top: 1331px;
+  left: 314px;
+}
+
+.frame .button-primary-with {
+  display: flex;
+  flex-direction: column;
+  width: 668px;
+  height: 118px;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 16px;
+  position: relative;
+  background-color: var(--color-background-utilities-scrim);
+  border-radius: 20px;
+}
+
+.frame .button-name-wrapper {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  position: relative;
+  flex: 0 0 auto;
+}
+
+.frame .button-name {
+  position: relative;
+  width: fit-content;
+  margin-top: -1.00px;
+  font-family: "Plus Jakarta Sans-Bold", Helvetica;
+  font-weight: 700;
+  color: #000000;
+  font-size: 48px;
+  text-align: right;
+  letter-spacing: 0;
+  line-height: 24px;
+  white-space: nowrap;
+}
+
+.frame .sign-up {
+  display: flex;
+  flex-direction: column;
+  width: 668px;
+  height: 118px;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 20px 16px;
+  position: absolute;
+  top: 1518px;
+  left: 314px;
+  background-color: var(--color-background-utilities-scrim);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.frame .div-wrapper {
+  all: unset;
+  box-sizing: border-box;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  position: relative;
+  flex: 0 0 auto;
+}
+
+.frame .button {
+  all: unset;
+  box-sizing: border-box;
+  position: relative;
+  width: fit-content;
+  margin-top: -1.00px;
+  font-family: "Plus Jakarta Sans-Bold", Helvetica;
+  font-weight: 700;
+  color: #000000;
+  font-size: 48px;
+  text-align: right;
+  letter-spacing: 0;
+  line-height: 28px;
+  white-space: nowrap;
+}
+
+.frame .explore-sri-lanka {
+  position: absolute;
+  width: 1044px;
+  top: 672px;
+  left: 126px;
+  font-family: "Plus Jakarta Sans-Bold", Helvetica;
+  font-weight: 700;
+  color: #ffffff;
+  font-size: 48px;
+  text-align: center;
+  line-height: 60px;
+}
+
+.frame .span {
+  letter-spacing: 0.48px;
+}
+
+.frame .text-wrapper-2 {
+  letter-spacing: 1.44px;
+}
+
+.frame .travel-smarter {
+  position: absolute;
+  width: 752px;
+  height: 70px;
+  top: 1721px;
+  left: 268px;
+}
+
+.frame .avatar {
+  position: absolute;
+  width: 151px;
+  height: 126px;
+  top: 21px;
+  left: 1092px;
+  border-radius: var(--size-radius-full);
+  overflow: hidden;
+}
+
+.frame .shape {
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  top: 43px;
+  left: 56px;
+  object-fit: cover;
+}
