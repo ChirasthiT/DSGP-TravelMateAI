@@ -21,9 +21,9 @@ def feature1():
     return render_template('li.html')
 
 
-# @app.route('/feature2')
-# def feature2():
-#     return "Feature 2 Page"
+@app.route('/EC.home')
+def feature2():
+    return render_template('EC.html')
 
 
 # @app.route('/feature3')
