@@ -144,13 +144,14 @@
             }
 
             try {
-                const response = await fetch('/identify', { method: 'POST', body: formData });
+                const response = await fetch('/location-identification/identify', { method: 'POST', body: formData });
                 const result = await response.json();
 
                 if (response.status === 404 || result.error) {
                     showError(result.error || 'Location not found.');
                 } else {
                     // Populate modal content dynamically
+                    console.log(result.prediction);
                     document.getElementById('resultImage').src = result.image_url;
                     document.getElementById('resultTitle').innerText = result.title || 'No Title Available';
                     document.getElementById('resultName').innerHTML = `<strong>Name:</strong> ${result.name}`;
