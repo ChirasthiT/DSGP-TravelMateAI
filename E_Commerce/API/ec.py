@@ -3,7 +3,7 @@ from flask_cors import CORS
 from werkzeug.utils import secure_filename
 from urllib.parse import quote
 import os
-from product_recommender import ProductRecommender
+from Recommender import Recommender
 from Product import Product
 from flask_pymongo import PyMongo
 from pydantic import BaseModel
@@ -100,8 +100,6 @@ def recommend():
 
     except Exception as e:
         return jsonify({'error': str(e)}), 500
-
-
 
 
 if __name__ == "__main__":
