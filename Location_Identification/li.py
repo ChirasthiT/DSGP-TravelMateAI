@@ -9,8 +9,8 @@ li_blueprint = Blueprint('li', __name__, template_folder='templates', static_fol
 UPLOAD_FOLDER = 'Location_Identification/uploads'
 ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg'}
 
-if not os.path.exists(UPLOAD_FOLDER):
-    os.makedev(UPLOAD_FOLDER)
+#if not os.path.exists(UPLOAD_FOLDER):
+#    os.makedev(UPLOAD_FOLDER)
 
 image_identifier = Image_Identification()
 
