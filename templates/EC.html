@@ -3,20 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Product Recommendations</title>
+    <title>Tourist Recommendation System</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css">
 </head>
 <body>
     <div class="container my-5">
-        <h1 class="text-center">Product Recommendation System</h1>
+        <h1 class="text-center">Tourist Recommendation System</h1>
 
-        <!-- Search Box to input product keywords -->
+        <!-- Search Filters -->
         <div class="row justify-content-center my-4">
             <div class="col-md-6">
-                <div class="input-group">
-                    <input type="text" id="searchBox" class="form-control" placeholder="Enter keywords (e.g., waterproof, phone)">
-                    <button class="btn btn-primary" onclick="generateRec()">Search</button>
+                <div class="input-group mb-2">
+                    <input type="text" id="district" class="form-control" placeholder="Enter district (e.g., Galle, Kandy)">
                 </div>
+                <div class="input-group mb-2">
+                    <input type="text" id="category" class="form-control" placeholder="Enter category (e.g., hotel, restaurant)">
+                </div>
+                <div class="input-group mb-2">
+                    <select id="budget" class="form-control">
+                        <option value="">Select Budget</option>
+                        <option value="low">Low</option>
+                        <option value="median">Medium</option>
+                        <option value="high">High</option>
+                    </select>
+                </div>
+                <button class="btn btn-primary w-100" onclick="fetchRecommendations()">Get Recommendations</button>
             </div>
         </div>
 
@@ -25,57 +36,47 @@
     </div>
 
     <script>
-        async function generateRec() {
+        async function fetchRecommendations() {
             try {
-                // Get search keyword from the input box
-                const searchQuery = document.getElementById('searchBox').value.trim();
-                if (!searchQuery) {
-                    throw new Error("Please enter a keyword to search.");
-                }
+                const district = document.getElementById('district').value.trim();
+                const category = document.getElementById('category').value.trim();
+                const budget = document.getElementById('budget').value;
 
-                // Send the search query as a query parameter in the GET request
-                const response = await fetch(`http://127.0.0.1:5000/recommend?keywords=${encodeURIComponent(searchQuery)}`, {
-                    method: 'GET'
+                const queryParams = new URLSearchParams({
+                    user_district: district,
+                    user_category: category,
+                    user_budget: budget
                 });
 
-                // Check if the response is OK
+                const response = await fetch(`http://127.0.0.1:5000/recommend?${queryParams}`);
+
                 if (!response.ok) {
-                    throw new Error(`Error: ${response.status} - ${response.statusText}`);
+                    throw new Error(`Error: ${response.statusText}`);
                 }
 
                 const data = await response.json();
-                console.log(data);
-
-                // Check if recommendations exist
                 if (!data.recommendations || data.recommendations.length === 0) {
                     throw new Error("No recommendations found.");
                 }
 
-                // Generate the recommendation list
                 let recommendationsList = "<div class='list-group'>";
-                data.recommendations.forEach(product => {
+                data.recommendations.forEach(item => {
                     recommendationsList += `
                         <div class="list-group-item">
-                            <h5 class="mb-1">${product["Product Name"]}</h5>
-                            <p class="mb-1">Category: ${product.Category}</p>
-                            <p class="mb-1">Description: ${product.Description}</p>
-                            <small>Price: $${product.Price}</small>
+                            <h5 class="mb-1">${item.Name}</h5>
+                            <p class="mb-1">Category: ${item.Category}</p>
+                            <p class="mb-1">Address: ${item.Address}</p>
+                            <p class="mb-1">Budget: ${item["Budget Level"]}</p>
+                            <small>Rating: ${item.Rating}</small>
                         </div>
                     `;
                 });
                 recommendationsList += "</div>";
-
                 document.getElementById('recommendation').innerHTML = recommendationsList;
             } catch (error) {
-                document.getElementById('recommendation').innerHTML = `
-                    <div class="alert alert-danger">${error.message}</div>
-                `;
+                document.getElementById('recommendation').innerHTML = `<div class="alert alert-danger">${error.message}</div>`;
             }
         }
-
     </script>
-
-
-
 </body>
 </html>
