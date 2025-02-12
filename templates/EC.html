@@ -14,13 +14,29 @@
         <div class="row justify-content-center my-4">
             <div class="col-md-6">
                 <div class="input-group mb-2">
-                    <input type="text" id="district" class="form-control" placeholder="Enter district (e.g., Galle, Kandy)">
+                    <label for="district"></label><select id="district" class="form-control">
+                            <option value="">Select District</option>
+                            <option value="Kandy">Kandy</option>
+                            <option value="Matale">Matale</option>
+                            <option value="Nuwara Eliya">Nuwara Eliya</option>
+                            <option value="Galle">Galle</option>
+                            <option value="Hambantota">Hambantota</option>
+                            <option value="Matara">Matara</option>
+                            <option value="Trincomalee">Trincomalee</option>
+                        </select>
+
                 </div>
                 <div class="input-group mb-2">
-                    <input type="text" id="category" class="form-control" placeholder="Enter category (e.g., hotel, restaurant)">
+                    <label for="category"></label><select id="category" class="form-control">
+                            <option value="">Select Category</option>
+                            <option value="hotel">Hotel</option>
+                            <option value="restaurant">Restaurant</option>
+                            <option value="guest house">Guest House</option>
+                            <option value="bangalow">Bungalow</option>
+                        </select>
                 </div>
                 <div class="input-group mb-2">
-                    <select id="budget" class="form-control">
+                    <label for="budget"></label><select id="budget" class="form-control">
                         <option value="">Select Budget</option>
                         <option value="low">Low</option>
                         <option value="median">Medium</option>
@@ -36,47 +52,85 @@
     </div>
 
     <script>
+
+            function renderRecommendations(recommendations) {
+                const recommendationDiv = document.getElementById('recommendation');
+                recommendationDiv.innerHTML = ''; // Clear previous recommendations
+
+                if (recommendations.length > 0) {
+                    const list = document.createElement('ul');
+                    recommendations.forEach((item) => {
+                        const listItem = document.createElement('li');
+                        listItem.textContent = `${item.Category} - ${item.Name} (${item.District}) - Rating: ${item.Rating}`;
+                        list.appendChild(listItem);
+                    });
+                    recommendationDiv.appendChild(list);
+                } else {
+                    recommendationDiv.innerHTML = '<div class="alert alert-info">No recommendations available.</div>';
+                }
+            }
+
+
         async function fetchRecommendations() {
             try {
-                const district = document.getElementById('district').value.trim();
-                const category = document.getElementById('category').value.trim();
-                const budget = document.getElementById('budget').value;
 
-                const queryParams = new URLSearchParams({
-                    user_district: district,
-                    user_category: category,
-                    user_budget: budget
-                });
+                const district = document.getElementById('district').value;
+                const category = document.getElementById('category').value;
+                const budget = document.getElementById('budget').value
 
-                const response = await fetch(`http://127.0.0.1:5000/recommend?${queryParams}`);
+                const queryParams = new URLSearchParams();
+
+                if (district) queryParams.append('district', district);
+                if (category) queryParams.append('category', category);
+                if (budget) queryParams.append('budget', budget);
+
+                const url = `http://127.0.0.1:5000/recommendation/recommend?${queryParams.toString()}`;
+                console.log("Fetching from URL:", url); // Debugging
+
+                const response = await fetch(url);
+
+                const textResponse = await response.text();
+                // console.log("Raw response:", textResponse); // Debugging
 
                 if (!response.ok) {
-                    throw new Error(`Error: ${response.statusText}`);
+                    throw new Error(`Server Error: ${response.status}`);
                 }
 
-                const data = await response.json();
+
+                let data;
+                try {
+                    data = JSON.parse(textResponse);
+                } catch (error) {
+                    throw new Error("Invalid JSON response from server");
+                }
+
+                console.log("Parsed JSON:", data); // Debugging
+
                 if (!data.recommendations || data.recommendations.length === 0) {
                     throw new Error("No recommendations found.");
                 }
 
-                let recommendationsList = "<div class='list-group'>";
                 data.recommendations.forEach(item => {
-                    recommendationsList += `
-                        <div class="list-group-item">
-                            <h5 class="mb-1">${item.Name}</h5>
-                            <p class="mb-1">Category: ${item.Category}</p>
-                            <p class="mb-1">Address: ${item.Address}</p>
-                            <p class="mb-1">Budget: ${item["Budget Level"]}</p>
-                            <small>Rating: ${item.Rating}</small>
-                        </div>
-                    `;
+                    console.log(`Category: ${item.Category}`);
+                    console.log(`Name: ${item.Name}`);
+                    console.log(`Address: ${item.Address}`);
+                    console.log(`District: ${item.District}`);
+                    console.log(`Budget Level: ${item['Budget Level']}`);
+                    console.log(`Rating: ${item.Rating}`);
+                    console.log(`Similarity: ${item.Similarity}`);
+                    console.log('-------------------');
                 });
-                recommendationsList += "</div>";
-                document.getElementById('recommendation').innerHTML = recommendationsList;
+
+                // Render recommendations in HTML
+                renderRecommendations(data.recommendations);
+
             } catch (error) {
+                console.error(error);
                 document.getElementById('recommendation').innerHTML = `<div class="alert alert-danger">${error.message}</div>`;
             }
         }
-    </script>
+
+</script>
+
 </body>
 </html>
