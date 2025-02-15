@@ -1,16 +1,15 @@
 class Location:
-    def __init__(self, name, description, image_url):
+    def __init__(self, name, description):
         self.name = name
         self.description = description
-        self.image_url = image_url
 
     @staticmethod
     def from_dict(data):
-        return Location(data['name'], data['description'], data['image_url'])
+        return Location(data['name'], data['description'])
 
     def to_dict(self):
         return {
             'name': self.name,
             'description': self.description,
-            'image_url': self.image_url
+
         }

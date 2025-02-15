@@ -69,6 +69,6 @@ class Recommender:
 
         recommendations = recommendations.sort_values(by="Similarity", ascending=False)
         return recommendations[
-            ["Category", "Name", "Address", "District", "Budget Level", "Rating", "Similarity"]].head(top_n)
+            ["Category", "Name", "Address", "District", "Budget Level", "Rating", "Similarity","Image"]].head(top_n)
 
 
