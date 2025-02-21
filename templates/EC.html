@@ -5,6 +5,50 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tourist Recommendation System</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f9f9f9;
+        }
+        .masonry {
+            columns: 3;
+            column-gap: 20px;
+        }
+        .masonry-item {
+            break-inside: avoid;
+            margin-bottom: 20px;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            transition: transform 0.3s ease;
+        }
+        .masonry-item:hover {
+            transform: translateY(-5px);
+        }
+        .masonry-item img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 8px 8px 0 0;
+        }
+        .masonry-content {
+            padding: 15px;
+        }
+        .masonry-title {
+            font-size: 1.1rem;
+            margin: 0 0 10px;
+        }
+        .masonry-description {
+            font-size: 0.9rem;
+            color: #555;
+        }
+        .alert {
+            margin-top: 20px;
+        }
+    </style>
 </head>
 <body>
     <div class="container my-5">
@@ -14,29 +58,31 @@
         <div class="row justify-content-center my-4">
             <div class="col-md-6">
                 <div class="input-group mb-2">
-                    <label for="district"></label><select id="district" class="form-control">
-                            <option value="">Select District</option>
-                            <option value="Kandy">Kandy</option>
-                            <option value="Matale">Matale</option>
-                            <option value="Nuwara Eliya">Nuwara Eliya</option>
-                            <option value="Galle">Galle</option>
-                            <option value="Hambantota">Hambantota</option>
-                            <option value="Matara">Matara</option>
-                            <option value="Trincomalee">Trincomalee</option>
-                        </select>
-
+                    <label for="district"></label>
+                    <select id="district" class="form-control">
+                        <option value="">Select District</option>
+                        <option value="Kandy">Kandy</option>
+                        <option value="Matale">Matale</option>
+                        <option value="Nuwara Eliya">Nuwara Eliya</option>
+                        <option value="Galle">Galle</option>
+                        <option value="Hambantota">Hambantota</option>
+                        <option value="Matara">Matara</option>
+                        <option value="Trincomalee">Trincomalee</option>
+                    </select>
                 </div>
                 <div class="input-group mb-2">
-                    <label for="category"></label><select id="category" class="form-control">
-                            <option value="">Select Category</option>
-                            <option value="hotel">Hotel</option>
-                            <option value="restaurant">Restaurant</option>
-                            <option value="guest house">Guest House</option>
-                            <option value="bangalow">Bungalow</option>
-                        </select>
+                    <label for="category"></label>
+                    <select id="category" class="form-control">
+                        <option value="">Select Category</option>
+                        <option value="hotel">Hotel</option>
+                        <option value="restaurant">Restaurant</option>
+                        <option value="guest house">Guest House</option>
+                        <option value="bangalow">Bungalow</option>
+                    </select>
                 </div>
                 <div class="input-group mb-2">
-                    <label for="budget"></label><select id="budget" class="form-control">
+                    <label for="budget"></label>
+                    <select id="budget" class="form-control">
                         <option value="">Select Budget</option>
                         <option value="low">Low</option>
                         <option value="median">Medium</option>
@@ -51,102 +97,123 @@
         <div id="recommendation" class="mt-4"></div>
     </div>
 
-<script>
-    function renderRecommendations(recommendations) {
-        const recommendationDiv = document.getElementById('recommendation');
-        recommendationDiv.innerHTML = ''; // Clear previous recommendations
+    <script>
 
-        if (recommendations.length > 0) {
-            const list = document.createElement('ul'); // list for recommendations
-            recommendations.forEach((item) => {
-                const listItem = document.createElement('li');
-                listItem.style.display = 'flex'; // flexbox for layout
-                listItem.style.alignItems = 'center'; // Align items vertically
-                listItem.style.marginBottom = '20px'; // spacing between items
+        function getStarRating(rating) {
+                    const maxStars = 5;
+                    const fullStar = "★";
+                    const halfStar = "½";
+                    const emptyStar = "☆";
 
-                if (item.Image) {
-                    const img = document.createElement('img');
-                    img.src = `data:image/jpeg;base64,${item.Image}`;
-                    img.alt = item.Name; // Alt text for accessibility
-                    img.style.width = '100px';
-                    img.style.height = '100px';
-                    img.style.marginRight = '20px'; //  spacing between image and text
-                    listItem.appendChild(img);
+                    let stars = "";
+                    const fullStars = Math.floor(rating); // Number of full stars
+                    const hasHalfStar = rating - fullStars >= 0.5; // Check for half star
+                    for (let i = 0; i < fullStars; i++) {
+                        stars += fullStar;
+                    }
+                    if (hasHalfStar) {
+                        stars += halfStar;
+                    }
+                    const remainingStars = maxStars - fullStars - (hasHalfStar ? 1 : 0);
+                    for (let i = 0; i < remainingStars; i++) {
+                        stars += emptyStar;
+                    }
+                    return `<span style="color: gold;">${stars}</span>`;
                 }
 
-                // Add text content for the recommendation
-                const textDiv = document.createElement('div');
-                textDiv.innerHTML = `
-                    <strong>${item.Category}</strong> - ${item.Name} (${item.District})<br>
-                    Address: ${item.Address}<br>
-                    Budget Level: ${item['Budget Level']}<br>
-                    Rating: ${item.Rating}<br>
-                    Similarity: ${item.Similarity.toFixed(2)}
-                `;
-                listItem.appendChild(textDiv);
+        function renderRecommendations(recommendations) {
+            const recommendationDiv = document.getElementById('recommendation');
+            recommendationDiv.innerHTML = ''; // Clear previous recommendations
 
-                list.appendChild(listItem);
-            });
-            recommendationDiv.appendChild(list);
-        } else {
-            // if no recommendations are available
-            recommendationDiv.innerHTML = '<div class="alert alert-info">No recommendations available.</div>';
+            if (recommendations.length > 0) {
+                const masonry = document.createElement('div');
+                masonry.className = 'masonry';
+
+                recommendations.forEach((item) => {
+                    const masonryItem = document.createElement('div');
+                    masonryItem.className = 'masonry-item';
+
+                    // Add image if available
+                    if (item.Image) {
+                        const img = document.createElement('img');
+                        img.src = `data:image/jpeg;base64,${item.Image}`;
+                        img.alt = item.Name || 'Recommendation Image';
+                        masonryItem.appendChild(img);
+                    }
+
+                    // Add text content
+                    const masonryContent = document.createElement('div');
+                    masonryContent.className = 'masonry-content';
+                    masonryContent.innerHTML = `
+                        <h2 class="masonry-title">${item.Name}</h2>
+                        <p class="masonry-description">${item.Address || 'No address provided'}</p>
+                        <p><strong>Rating:</strong> ${item.Rating ? getStarRating(item.Rating) : 'Not rated'}</p>
+                    `;
+                    masonryItem.appendChild(masonryContent);
+                    masonry.appendChild(masonryItem);
+                });
+
+                recommendationDiv.appendChild(masonry);
+            } else {
+                recommendationDiv.innerHTML = '<div class="alert alert-info">No recommendations available.</div>';
+            }
         }
-    }
 
-    // Function to fetch recommendations from the server
-    async function fetchRecommendations() {
-        try {
-            // Get user inputs
-            const district = document.getElementById('district').value.trim();
-            const category = document.getElementById('category').value.trim();
-            const budget = document.getElementById('budget').value.trim();
+        async function fetchRecommendations() {
+            try {
+                // Get user inputs
+                const district = document.getElementById('district').value.trim();
+                const category = document.getElementById('category').value.trim();
+                const budget = document.getElementById('budget').value.trim();
 
-            // Validate inputs
-            if (!district && !category && !budget) {
-                throw new Error("Please provide at least one filter (District, Category, or Budget).");
-            }
+                // Validate inputs
+                if (!district && !category && !budget) {
+                    throw new Error("Please provide at least one filter (District, Category, or Budget).");
+                }
 
-            // Build query parameters
-            const queryParams = new URLSearchParams();
-            if (district) queryParams.append('district', district);
-            if (category) queryParams.append('category', category);
-            if (budget) queryParams.append('budget', budget);
+                // Build query parameters
+                const queryParams = new URLSearchParams();
+                if (district) queryParams.append('district', district);
+                if (category) queryParams.append('category', category);
+                if (budget) queryParams.append('budget', budget);
 
-            // Fetch recommendations from the server
-            const url = `http://127.0.0.1:5000/recommendation/recommend?${queryParams.toString()}`;
-            const response = await fetch(url);
+                // Fetch recommendations from the server
+                const url = `http://127.0.0.1:5000/recommendation/recommend?${queryParams.toString()}`;
+                const response = await fetch(url);
 
-            // Handle errors
-            if (!response.ok) {
-                throw new Error(`Server Error: ${response.status}`);
-            }
-            // Parse the JSON response
-            const data = await response.json();
+                // Handle errors
+                if (!response.ok) {
+                    throw new Error(`Server Error: ${response.status}`);
+                }
 
-            // Check if recommendations are available
-            if (!data.recommendations || data.recommendations.length === 0) {
-                throw new Error("No recommendations found.");
-            }
+                // Parse the JSON response
+                const data = await response.json();
 
-            // Log detailed information about each recommendation
-            data.recommendations.forEach(item => {
-                console.log(`Category: ${item.Category}`);
+                // Check if recommendations are available
+                if (!data.recommendations || data.recommendations.length === 0) {
+                    throw new Error("No recommendations found.");
+                }
+
+                data.recommendations.forEach(item => {console.log(`Category: ${item.Category}`);
                 console.log(`Name: ${item.Name}`);
+                console.log(`Address: ${item.Address}`);
+                console.log(`District: ${item.District}`);
+                console.log(`Budget Level: ${item['Budget Level']}`);
+                console.log(`Rating: ${item.Rating}`);
                 console.log(`Similarity: ${item.Similarity}`);
                 console.log('-------------------');
             });
 
-            // Render recommendations in HTML
-            renderRecommendations(data.recommendations);
-        } catch (error) {
-            console.error(error);
-            document.getElementById('recommendation').innerHTML = `
-                <div class="alert alert-danger">${error.message}</div>
-            `;
+                // Render recommendations in HTML
+                renderRecommendations(data.recommendations);
+            } catch (error) {
+                console.error(error);
+                document.getElementById('recommendation').innerHTML = `
+                    <div class="alert alert-danger">${error.message}</div>
+                `;
+            }
         }
-    }
-</script>
-
+    </script>
 </body>
 </html>
+
