@@ -5,83 +5,153 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Location Identification</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css">
+    <style>
+        video {
+            width: 100%;
+            height: 80vh;
+            object-fit: cover;
+        }
+        .camera-controls {
+            display: flex;
+            justify-content: center; /* center the icons */
+            align-items: center;
+            gap: 30px; /* increase space between icons */
+        }
+        .camera-controls img {
+            width: 10vw;
+            height: auto;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        #resultModal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            visibility: hidden;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            opacity: 0;
+            transition: visibility 0s linear 0.3s, opacity 0.3s ease-in-out;
+        }
+        #resultModal.show {
+            visibility: visible;
+            opacity: 1;
+            transition-delay: 0s;
+        }
+        .modal-content {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            width: 90%;
+            max-width: 500px;
+            position: relative;
+        }
+        .close-btn {
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            font-size: 20px;
+            cursor: pointer;
+        }
+        @media (max-width: 768px) {
+            video {
+                height: 65vh;
+            }
+            #resultModal {
+                align-items: flex-start;
+                display: none;
+            }
+            .d-flex .modal-content {
+                width: 100%;
+                height: 100%;
+                border-radius: 0;
+                padding-top: 50px;
+                overflow-y: auto;
+            }
+            #companylogo {
+                width: 50vw; /* enlarge logo on mobile */
+                max-height: 55vh;
+            }
+            .camera-controls {
+                gap: 30px;
+            }
+            .camera-controls img {
+                width: 30vw; 
+                height: auto;
+            }
+        }
+        #companylogo {
+            width: 15vw;
+            height: auto;
+            max-width: 100%;
+            max-height: 10vh;
+            margin-top: 20px;
+            margin-left: 20px;
+        }
+        #upload-form {
+            display: none;
+        }
+        /* Hide the 'Upload an Image' heading */
+        h2.mt-4 {
+            display: none;
+        }
+    </style>
 </head>
 <body>
-    <div class="container mt-5">
-        <h1 class="text-center">Location Identification</h1>
-
-        <!-- Camera Feed Section -->
-        <h2 class="mt-5">Real-Time Camera Feed</h2>
-        <div class="text-center">
-            <video id="camera" width="320" height="240" autoplay></video>
-            <br>
-            <button type="button" class="btn btn-primary mt-3" onclick="captureImage()">Capture Image</button>
+    <img id="companylogo" src="/static/img/Logo.svg"  alt="company logo"/>
+    <div class="container mt-3 text-center">
+        <video id="camera" autoplay></video>
+        <div class="camera-controls mt-3">
+            <img src="/static/img/Camera Flip.svg" alt="Flip Camera" onclick="flipCamera()" style="cursor:pointer;" />
+            <img src="/static/img/Capture.svg" alt="Capture Image" onclick="captureImage()" style="cursor:pointer;" />
+            <label for="file" style="cursor:pointer;">
+                <img src="/static/img/Upload.svg" alt="Upload Image" style="cursor:pointer;" />
+            </label>
         </div>
-
-        <!-- Image Upload Section -->
-        <h2 class="mt-4">Upload an Image</h2>
+        <h2 class="mt-4" onclick="showUploadForm()">Upload an Image</h2>
         <form id="upload-form" enctype="multipart/form-data">
             <div class="mb-3">
                 <input type="file" class="form-control" id="file" name="file" accept="image/*">
             </div>
-            <button type="button" class="btn btn-primary" onclick="uploadImage()">Upload and Identify</button>
+            <button type="button" class="btn btn-primary" style="display:none;" onclick="uploadImage()">Upload and Identify</button>
         </form>
     </div>
 
-    <!-- Modal for Results -->
-    <div class="modal fade" id="resultModal" tabindex="-1" aria-labelledby="resultModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="resultModalLabel">Location Details</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <!-- Modal Content -->
-                    <div id="modalResult">
-                        <div class="card">
-                            <img id="resultImage" src="" class="card-img-top" alt="Location Image">
-                            <div class="card-body">
-                                <h5 id="resultTitle" class="card-title"></h5>
-                                <p id="resultName" class="card-text"></p>
-                                <p id="resultHistoricalInfo" class="card-text"></p>
-                                <p id="resultFunFacts" class="card-text"></p>
-                                <p id="resultNearbyLocations" class="card-text"></p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                </div>
-            </div>
+    <div id="resultModal" class="d-flex">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal()">&times;</span>
+            <div id="modalResultDiv"></div>
         </div>
     </div>
-
     <script>
-        const video = document.getElementById('camera');
-        const modalResultDiv = document.getElementById('modalResult');
+        let video = document.getElementById('camera');
+        let currentStream = null;
+        let facingMode = "environment";
 
-        // Start the camera feed
-        navigator.mediaDevices.getUserMedia({ video: true })
-            .then(stream => {
-                video.srcObject = stream;
-            })
-            .catch(err => {
-                console.error("Error accessing the camera:", err);
-                modalResultDiv.innerHTML = `<div class='alert alert-danger'>Error accessing camera: ${err.message}</div>`;
-                showModal();
-            });
+        function startCamera() {
+            if (currentStream) {
+                currentStream.getTracks().forEach(track => track.stop());
+            }
+            navigator.mediaDevices.getUserMedia({ video: { facingMode } })
+                .then(stream => {
+                    currentStream = stream;
+                    video.srcObject = stream;
+                })
+                .catch(err => {
+                    showModal(`<div class='alert alert-danger'>Error accessing the camera: ${err.message}</div>`);
+                });
+        }
 
-        // Function to handle image capture from the camera
         function captureImage() {
             const canvas = document.createElement('canvas');
             canvas.width = video.videoWidth;
             canvas.height = video.videoHeight;
-
             const ctx = canvas.getContext('2d');
             ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
-
             canvas.toBlob(blob => {
                 const formData = new FormData();
                 formData.append('file', blob, 'capture.png');
@@ -89,94 +159,65 @@
             });
         }
 
-        // Function to upload an image (either file input or captured image)
+        function flipCamera() {
+            facingMode = facingMode === "environment" ? "user" : "environment";
+            startCamera();
+        }
+
         async function uploadImage(formData = null) {
             if (!formData) {
                 const fileInput = document.getElementById('file');
                 if (!fileInput.files.length) {
-                    modalResultDiv.innerHTML = `<div class='alert alert-warning'>Please select an image to upload.</div>`;
-                    showModal();
+                    showModal(`<div class='alert alert-warning'>Please select an image to upload.</div>`);
                     return;
                 }
                 formData = new FormData(document.getElementById('upload-form'));
             }
-
-            modalResultDiv.innerHTML = "Identifying location...";
-            showModal();
-
-            try {
-                const response = await fetch('/identify', { method: 'POST', body: formData });
-                const result = await response.json();
-
-                if (result.error) {
-                    modalResultDiv.innerHTML = `<div class='alert alert-danger'>${result.error}</div>`;
-                } else {
-                    modalResultDiv.innerHTML = `
-                        <div class='card'>
-                            <img src='${result.image_url}' class='card-img-top' alt='Location Image'>
-                            <div class='card-body'>
-                                <h5 class='card-title'>${result.name}</h5>
-                                <p class='card-text'>${result.description}</p>
-                            </div>
-                        </div>
-                    `;
-                }
-            } catch (err) {
-                modalResultDiv.innerHTML = `<div class='alert alert-danger'>Error identifying the location: ${err.message}</div>`;
-            }
-        }
-
-        // Function to show the modal
-        function showModal() {
-            const resultModal = new bootstrap.Modal(document.getElementById('resultModal'));
-            resultModal.show();
-        }
-
-        // Function to upload image and display information in modal
-        async function uploadImage(formData = null) {
-            if (!formData) {
-                const fileInput = document.getElementById('file');
-                if (!fileInput.files.length) {
-                    showError('Please select an image to upload.');
-                    return;
-                }
-                formData = new FormData(document.getElementById('upload-form'));
-            }
-
             try {
                 const response = await fetch('/location-identification/identify', { method: 'POST', body: formData });
                 const result = await response.json();
-
                 if (response.status === 404 || result.error) {
-                    showError(result.error || 'Location not found.');
+                    showModal(`<div class='alert alert-danger'>Error identifying the location: ${result.error || 'Location not found.'}</div>`);
                 } else {
-                    // Populate modal content dynamically
-                    console.log(result.prediction);
-                    document.getElementById('resultImage').src = result.image_url;
-                    document.getElementById('resultTitle').innerText = result.title || 'No Title Available';
-                    document.getElementById('resultName').innerHTML = `<strong>Name:</strong> ${result.name}`;
-                    document.getElementById('resultHistoricalInfo').innerHTML = `<strong>Historical Info:</strong> ${result.historical_info || 'No information available.'}`;
-                    document.getElementById('resultFunFacts').innerHTML = `<strong>Fun Facts:</strong> ${result.fun_facts || 'No fun facts available.'}`;
-                    document.getElementById('resultNearbyLocations').innerHTML = `<strong>Nearby Locations:</strong> ${result.nearby_locations || 'No nearby locations available.'}`;
-
-                    // Show modal
-                    const resultModal = new bootstrap.Modal(document.getElementById('resultModal'));
-                    resultModal.show();
+                    showModal(`
+                        <div class="card mt-3">
+                            <img src="${result.image_url}" class="card-img-top" alt="Location Image">
+                            <div class="card-body">
+                                <h5 class="card-title">${result.title || 'No Title Available'}</h5>
+                                <p><strong>Historical Info:</strong> ${result.historical_info || 'No information available.'}</p>
+                                <p><strong>Fun Facts:</strong> ${result.fun_facts || 'No fun facts available.'}</p>
+                                <p><strong>Nearby Locations:</strong> ${result.nearby_locations || 'No nearby locations available.'}</p>
+                            </div>
+                        </div>`);
                 }
             } catch (err) {
-                showError('An error occurred while identifying the location.');
+                showModal(`<div class='alert alert-danger'>Error identifying the location: ${err.message}</div>`);
             }
         }
 
-        // Helper function to display error messages in modal
-        function showError(message) {
-            const modalResultDiv = document.getElementById('modalResult');
-            modalResultDiv.innerHTML = `<div class="alert alert-danger">${message}</div>`;
-            const resultModal = new bootstrap.Modal(document.getElementById('resultModal'));
-            resultModal.show();
+        function showModal(content) {
+            const modal = document.getElementById('resultModal');
+            document.getElementById('modalResultDiv').innerHTML = content;
+            modal.classList.add('show');
         }
-    </script>
 
+        function closeModal() {
+            const modal = document.getElementById('resultModal');
+            modal.classList.remove('show');
+        }
+
+        function showUploadForm() {
+            document.getElementById('upload-form').style.display = 'block';
+        }
+
+        document.getElementById('file').addEventListener('change', () => {
+            if (document.getElementById('file').files.length) {
+                uploadImage();
+            }
+        });
+
+        startCamera();
+    </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
