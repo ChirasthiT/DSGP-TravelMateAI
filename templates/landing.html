@@ -2,6 +2,7 @@
 <html>
   <head>
     <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="/static/globals.css" />
     <link rel="stylesheet" href="/static/styleguide.css" />
     <link rel="stylesheet" href="/static/style.css" />
@@ -11,33 +12,77 @@
       <div class="overlap-group-wrapper">
         <div class="overlap-group">
           <div class="background-mask"></div>
-          <img class="image" src="/img/landing_background.svg" alt="background"/>
           <img class="travelmate-AI" src="/static/img/TravelMate AI.svg"  alt="travelmate h1"/>
           <div class="text-wrapper">Your Ultimate Travel Companion!</div>
-          <div class="logo"><div class="div">TRAVELMATE AI</div></div>
-          <div class="buttons">
-            <div class="button-primary-with">
-              <div class="button-name-wrapper"><div class="button-name">Log In</div></div>
+          <div class="logo">
+            <div class="div">
+              <img src="/static/img/Logo.svg"  alt="company logo"/>
             </div>
           </div>
-          <div class="sign-up">
-            <button class="div-wrapper"><button class="button">Sign up</button></button>
+          <div class="buttons">
+            <button class="button" id="loginButton" onclick="openLoginPopup()">Log In</button>
+            <button class="button" id="signupButton" onclick="openSignupPopup()">Sign Up</button>
           </div>
           <p class="explore-sri-lanka">
-            <span class="span"
-              >Explore Sri Lanka effortlessly with TravelMate AI! From real-time landmark detection and
-              personalise</span
-            >
-            <span class="text-wrapper-2">d</span>
+            <span class="span">
+              Explore Sri Lanka effortlessly with TravelMate AI! From real-time landmark recognition and
+              personalised</span>
             <span class="span">
               itineraries to tailored shopping recommendations, we’ve got you covered. Stay secure with our SOS feature
-              offering instant alerts and emergency support</span
-            >
+              offering instant alerts and emergency support</span>
           </p>
           <img class="travel-smarter" src="/static/img/TravelsmarterTravelsaferTravelMateAI.svg"  alt="travelmate h2"/>
           <div class="avatar"><img class="shape" src="/static/img/Avatar.png"  alt="avatar of the user"/></div>
         </div>
       </div>
     </div>
+
+    <!-- Login Popup -->
+    <div id="loginPopup" class="popup">
+      <div class="popup-content">
+        <span class="close" onclick="closeLoginPopup()">&times;</span>
+        <h2>Login</h2>
+        <form>
+          <label for="username">Username:</label>
+          <input type="text" id="username" name="username" required>
+          <label for="password">Password:</label>
+          <input type="password" id="password" name="password" required>
+          <button type="submit">Login</button>
+        </form>
+      </div>
+    </div>
+
+    <!-- Signup Popup -->
+    <div id="signupPopup" class="popup">
+      <div class="popup-content">
+        <span class="close" onclick="closeSignupPopup()">&times;</span>
+        <h2>Sign Up</h2>
+        <form>
+          <label for="newUsername">Username:</label>
+          <input type="text" id="newUsername" name="newUsername" required>
+          <label for="newPassword">Password:</label>
+          <input type="password" id="newPassword" name="newPassword" required>
+          <button type="submit">Sign Up</button>
+        </form>
+      </div>
+    </div>
+
+    <script>
+      function openLoginPopup() {
+        document.getElementById('loginPopup').style.display = 'block';
+      }
+
+      function closeLoginPopup() {
+        document.getElementById('loginPopup').style.display = 'none';
+      }
+
+      function openSignupPopup() {
+        document.getElementById('signupPopup').style.display = 'block';
+      }
+
+      function closeSignupPopup() {
+        document.getElementById('signupPopup').style.display = 'none';
+      }
+    </script>
   </body>
 </html>

@@ -15,12 +15,11 @@ class Recommender:
         self.ngram_range = ngram_range
         self.tfidf_vectorizer = None
         self.encoder = OneHotEncoder()
-        self.budget_mapping = {"low": 1, "median": 2, "high": 3, "not available": 0}
+        self.budget_mapping = {"low": 1, "median": 2, "high": 3, "nan": 0}
 
     def load_data(self, collection):
         data = list(collection.find({}, {"_id": 0}))  # Exclude `_id`
         data = pd.DataFrame(data)
-        data.fillna("Not Available", inplace=True)
         data['District'] = data['District'].str.lower()
         data['Category'] = data['Category'].str.lower()
         data['Budget Level'] = data['Budget Level'].str.lower().map(self.budget_mapping)
@@ -70,6 +69,6 @@ class Recommender:
 
         recommendations = recommendations.sort_values(by="Similarity", ascending=False)
         return recommendations[
-            ["Category", "Name", "Address", "District", "Budget Level", "Rating", "Similarity"]].head(top_n)
+            ["Category", "Name", "Address", "District", "Budget Level", "Rating", "Similarity","Image"]].head(top_n)
 
 
