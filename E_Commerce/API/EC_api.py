@@ -27,6 +27,7 @@ def home():
 
 @EC_blueprint.route('/recommend', methods=['GET'])
 def recommend():
+
     user_budget = request.args.get('budget', '').strip().lower()
     user_district = request.args.get('district', '').strip().lower()
     user_category = request.args.get('category', '').strip().lower()
@@ -51,7 +52,7 @@ def recommend():
         image_name = os.path.basename(image_name)
         image_base64 = get_image_base64(image_name) if image_name else None
         recommendations_with_images.append({
-            "Category": row["Category"],
+            "Source": row["Source"],
             "Name": row["Name"],
             "Address": row["Address"],
             "District": row["District"],
