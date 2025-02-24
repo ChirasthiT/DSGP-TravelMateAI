@@ -12,13 +12,14 @@
             object-fit: cover;
         }
         .camera-controls {
+            width: 100%; 
             display: flex;
-            justify-content: center; /* center the icons */
+            justify-content: space-between;
             align-items: center;
-            gap: 30px; /* increase space between icons */
+            gap: 30px;
         }
         .camera-controls img {
-            width: 10vw;
+            width: 6vw; /* slightly smaller icons */
             height: auto;
             border-radius: 5px;
             cursor: pointer;
@@ -80,7 +81,7 @@
                 gap: 30px;
             }
             .camera-controls img {
-                width: 30vw; 
+                width: 15vw; /* responsive smaller icons for mobile */
                 height: auto;
             }
         }
