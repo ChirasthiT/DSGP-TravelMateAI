@@ -6,6 +6,13 @@
     <link rel="stylesheet" href="/static/globals.css" />
     <link rel="stylesheet" href="/static/styleguide.css" />
     <link rel="stylesheet" href="/static/style.css" />
+    <style>
+      .bigger-popup .popup-content {
+        width: 400px;
+        padding: 30px;
+        font-size: 1.1rem;
+      }
+    </style>
   </head>
   <body>
     <div class="frame">
@@ -38,32 +45,30 @@
     </div>
 
     <!-- Login Popup -->
-    <div id="loginPopup" class="popup">
+    <div id="loginPopup" class="popup bigger-popup">
       <div class="popup-content">
         <span class="close" onclick="closeLoginPopup()">&times;</span>
         <h2>Login</h2>
-        <form>
-          <label for="username">Username:</label>
-          <input type="text" id="username" name="username" required>
-          <label for="password">Password:</label>
-          <input type="password" id="password" name="password" required>
-          <button type="submit">Login</button>
-        </form>
+        <label>Username:</label>
+        <input type="text" id="username" required>
+        <label>Password:</label>
+        <input type="password" id="password" required>
+        <button type="button" onclick="loginUser()">Login</button>
       </div>
     </div>
 
     <!-- Signup Popup -->
-    <div id="signupPopup" class="popup">
+    <div id="signupPopup" class="popup bigger-popup">
       <div class="popup-content">
         <span class="close" onclick="closeSignupPopup()">&times;</span>
         <h2>Sign Up</h2>
-        <form>
-          <label for="newUsername">Username:</label>
-          <input type="text" id="newUsername" name="newUsername" required>
-          <label for="newPassword">Password:</label>
-          <input type="password" id="newPassword" name="newPassword" required>
-          <button type="submit">Sign Up</button>
-        </form>
+        <label>Username:</label>
+        <input type="text" id="newUsername" required>
+        <label>Password:</label>
+        <input type="password" id="newPassword" required>
+        <label>Email:</label>
+        <input type="email" id="email" required>
+        <button type="button" onclick="signupUser()">Sign Up</button>
       </div>
     </div>
 
@@ -82,6 +87,78 @@
 
       function closeSignupPopup() {
         document.getElementById('signupPopup').style.display = 'none';
+      }
+
+      async function loginUser() {
+        const username = document.getElementById('username').value;
+        const password = document.getElementById('password').value;
+        if (!username || !password) {
+          alert('Please fill in all fields.');
+          return;
+        }
+        try {
+          const res = await fetch('/auth/login', {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({ username, password })
+          });
+          const data = await res.json();
+          if (data.success) {
+            window.location.href = data.redirect;
+          } else {
+            alert(data.message || 'Login failed');
+          }
+        } catch (err) {
+          console.error(err);
+          alert('Error logging in');
+        }
+      }
+
+      async function signupUser() {
+        const newUsername = document.getElementById('newUsername').value;
+        const newPassword = document.getElementById('newPassword').value;
+        const email = document.getElementById('email').value;
+        if (!newUsername || !newPassword || !email) {
+          alert('Please fill in all fields.');
+          return;
+        }
+        try {
+          const res = await fetch('/auth/signup', {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({ newUsername, newPassword, email })
+          });
+          const data = await res.json();
+          if (data.success) {
+            window.location.href = data.redirect;
+          } else {
+            alert(data.message || 'Signup failed');
+          }
+        } catch (err) {
+          console.error(err);
+          alert('Error signing up');
+        }
+      }
+
+      function validateLoginForm() {
+        const username = document.getElementById('username').value.trim();
+        const password = document.getElementById('password').value.trim();
+        if (!username || !password) {
+          alert('Please fill in all required fields.');
+          return false;
+        }
+        return true;
+      }
+
+      function validateSignupForm() {
+        const username = document.getElementById('newUsername').value.trim();
+        const password = document.getElementById('newPassword').value.trim();
+        const email = document.getElementById('email').value.trim();
+        if (!username || !password || !email) {
+          alert('Please fill in all required fields.');
+          return false;
+        }
+        return true;
       }
     </script>
   </body>
