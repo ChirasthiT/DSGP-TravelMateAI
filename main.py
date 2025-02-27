@@ -1,10 +1,11 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, session
 from pymongo import MongoClient
 from Location_Identification.li import li_blueprint
 from E_Commerce.API.EC_api import EC_blueprint
 from Frontend.frontend import frontend_blueprint
 
 app = Flask(__name__, template_folder='templates', static_folder='static')
+app.secret_key = 'key'
 app.register_blueprint(li_blueprint, url_prefix='/location-identification')
 app.register_blueprint(frontend_blueprint, url_prefix='/auth')
 

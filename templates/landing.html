@@ -8,9 +8,11 @@
     <link rel="stylesheet" href="/static/style.css" />
     <style>
       .bigger-popup .popup-content {
-        width: 400px;
-        padding: 30px;
-        font-size: 1.1rem;
+        width: 600px;
+        padding: 40px;
+        font-size: 1.3rem;
+        box-shadow: 0 0 25px rgba(0, 0, 0, 0.3);
+        background: linear-gradient(to bottom right, #fff3f8, #f8faff);
       }
     </style>
   </head>
@@ -21,11 +23,6 @@
           <div class="background-mask"></div>
           <img class="travelmate-AI" src="/static/img/TravelMate AI.svg"  alt="travelmate h1"/>
           <div class="text-wrapper">Your Ultimate Travel Companion!</div>
-          <div class="logo">
-            <div class="div">
-              <img src="/static/img/Logo.svg"  alt="company logo"/>
-            </div>
-          </div>
           <div class="buttons">
             <button class="button" id="loginButton" onclick="openLoginPopup()">Log In</button>
             <button class="button" id="signupButton" onclick="openSignupPopup()">Sign Up</button>
@@ -39,7 +36,6 @@
               offering instant alerts and emergency support</span>
           </p>
           <img class="travel-smarter" src="/static/img/TravelsmarterTravelsaferTravelMateAI.svg"  alt="travelmate h2"/>
-          <div class="avatar"><img class="shape" src="/static/img/Avatar.png"  alt="avatar of the user"/></div>
         </div>
       </div>
     </div>
