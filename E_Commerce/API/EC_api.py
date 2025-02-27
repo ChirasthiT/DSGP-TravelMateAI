@@ -28,9 +28,9 @@ def home():
 @EC_blueprint.route('/recommend', methods=['GET'])
 def recommend():
 
-    user_budget = request.args.get('budget', '').strip().lower()
-    user_district = request.args.get('district', '').strip().lower()
-    user_category = request.args.get('category', '').strip().lower()
+    user_budget = 'low'
+    user_district = 'kandy'
+    user_category = 'accomodation'
 
     # Fetch and preprocess data
     recommender = Recommender()
