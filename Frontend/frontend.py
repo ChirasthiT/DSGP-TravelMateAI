@@ -1,4 +1,4 @@
-from flask import Blueprint, request, redirect, url_for, flash, render_template, jsonify
+from flask import Blueprint, request, redirect, url_for, flash, render_template, jsonify, session
 
 frontend_blueprint = Blueprint('frontend', __name__)
 
@@ -17,6 +17,7 @@ def login():
         return jsonify({'success': False, 'message': 'Missing fields'}), 400
     user = frontend_blueprint.db['user'].find_one({'username': username, 'password': password})
     if user:
+        session['user_email'] = user['email']
         return jsonify({'success': True, 'redirect': url_for('frontend.main')})
     else:
         return jsonify({'success': False, 'message': 'Invalid credentials'}), 401
@@ -34,4 +35,5 @@ def signup():
     if existing_user:
         return jsonify({'success': False, 'message': 'Username already exists'}), 409
     frontend_blueprint.db['user'].insert_one({'username': username, 'email': email, 'password': password})
+    session['user_email'] = email
     return jsonify({'success': True, 'redirect': url_for('frontend.main')})

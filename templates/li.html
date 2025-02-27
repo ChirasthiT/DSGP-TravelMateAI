@@ -19,7 +19,7 @@
             gap: 30px;
         }
         .camera-controls img {
-            width: 6vw; /* slightly smaller icons */
+            width: 4vw; /* smaller icons in desktop mode */
             height: auto;
             border-radius: 5px;
             cursor: pointer;
@@ -74,14 +74,17 @@
                 overflow-y: auto;
             }
             #companylogo {
-                width: 50vw; /* enlarge logo on mobile */
-                max-height: 55vh;
+                width: 80vw !important;
+                height: auto !important;
+                max-height: none !important;
+                margin-top: 50vh; !important;
+                margin-left: 0; !important;
             }
             .camera-controls {
                 gap: 30px;
             }
             .camera-controls img {
-                width: 15vw; /* responsive smaller icons for mobile */
+                width: 15vw; /* larger icons on mobile */
                 height: auto;
             }
         }
@@ -90,8 +93,10 @@
             height: auto;
             max-width: 100%;
             max-height: 10vh;
-            margin-top: 20px;
-            margin-left: 20px;
+            margin-top: 50px; /* added extra top space */
+            margin-left: 20px; /* revert to left side for web */
+            display: block;
+            margin: 0 auto;
         }
         #upload-form {
             display: none;
@@ -99,6 +104,14 @@
         /* Hide the 'Upload an Image' heading */
         h2.mt-4 {
             display: none;
+        }
+        #historySection .history-item {
+            margin-bottom: 10px;
+            font-size: 1.2rem; /* bigger text */
+        }
+        #historySection img {
+            max-width: 80px; /* bigger images */
+            margin-right: 10px;
         }
     </style>
 </head>
@@ -112,6 +125,10 @@
             <label for="file" style="cursor:pointer;">
                 <img src="/static/img/Upload.svg" alt="Upload Image" style="cursor:pointer;" />
             </label>
+        </div>
+        <div id="historySection" class="mt-3">
+            <h5>User History</h5>
+            <div id="historyList" class="text-start"></div>
         </div>
         <h2 class="mt-4" onclick="showUploadForm()">Upload an Image</h2>
         <form id="upload-form" enctype="multipart/form-data">
@@ -190,9 +207,37 @@
                                 <p><strong>Nearby Locations:</strong> ${result.nearby_locations || 'No nearby locations available.'}</p>
                             </div>
                         </div>`);
+                    refreshHistory();
                 }
             } catch (err) {
                 showModal(`<div class='alert alert-danger'>Error identifying the location: ${err.message}</div>`);
+            }
+        }
+
+        async function refreshHistory() {
+            try {
+                const res = await fetch('/location-identification/history');
+                const data = await res.json();
+                const historyList = document.getElementById('historyList');
+                if (!data.length) {
+                    historyList.innerHTML = '<p>No history found.</p>';
+                    return;
+                }
+                let html = '';
+                data.forEach(item => {
+                    let time = new Date(item.timestamp).toLocaleString();
+                    html += `
+                        <div class="history-item d-flex align-items-center">
+                            <img src="${item.image_url}" alt="location image" />
+                            <div>
+                                <strong>${item.title || item.location}</strong><br>
+                                <small>${time}</small>
+                            </div>
+                        </div>`;
+                });
+                historyList.innerHTML = html;
+            } catch (err) {
+                console.error(err);
             }
         }
 
@@ -215,6 +260,10 @@
             if (document.getElementById('file').files.length) {
                 uploadImage();
             }
+        });
+
+        document.addEventListener('DOMContentLoaded', () => {
+            refreshHistory();
         });
 
         startCamera();
