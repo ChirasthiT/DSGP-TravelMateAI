@@ -30,7 +30,6 @@ def recommend():
 
     user_budget = 'low'
     user_district = 'kandy'
-    user_category = 'accomodation'
 
     # Fetch and preprocess data
     recommender = Recommender()
@@ -41,7 +40,7 @@ def recommend():
     data = recommender.load_data(collection)
     data, feature_matrix = recommender.preprocess_data(data)
     try:
-        recommendations = recommender.recommend(user_budget, user_district, user_category, data, feature_matrix)
+        recommendations = recommender.recommend(user_budget, user_district, data, feature_matrix)
     except ValueError as e:
         return jsonify({"error": f"ValueError: {str(e)}"}), 400
 

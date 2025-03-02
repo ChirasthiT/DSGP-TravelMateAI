@@ -35,11 +35,9 @@ class Recommender:
         feature_df = pd.concat([data[["Budget Level"]], district_df, source_df], axis=1)
         return data, feature_df
 
-    def recommend(self, user_budget=None, user_district=None, user_category=None, data=None, feature_df=None, top_n=6):
+    def recommend(self, user_budget=None, user_district=None, data=None, feature_df=None, top_n=15):
         if user_district:
             user_district = user_district.lower()
-        if user_category:
-            user_category = user_category.lower()
 
         # Map user_budget to numeric value
         user_budget = self.budget_mapping.get(user_budget.lower(), 0) if user_budget else data["Budget Level"].mean()
@@ -57,10 +55,7 @@ class Recommender:
         recommendations = data.copy()
         if user_district:
             recommendations = recommendations[recommendations["District"] == user_district]
-        if user_category:
-            recommendations = recommendations[recommendations["Source"].str.contains(user_category, case=False, na=False)]
         recommendations = recommendations.sort_values(by="Similarity", ascending=False)
-        top_n_recommendations = recommendations.head(top_n)
-        r_recommendations = top_n_recommendations.sample(frac=1).reset_index(drop=True)
+        print(recommendations)
 
-        return r_recommendations[["Source", "Name", "Address", "District", "Budget Level", "Rating", "Similarity", "Image"]].head(top_n)
+        return recommendations[["Source", "Name", "Address", "District", "Budget Level", "Rating", "Similarity", "Image"]].head(top_n)
