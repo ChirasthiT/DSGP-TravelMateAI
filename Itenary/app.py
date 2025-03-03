@@ -1,5 +1,4 @@
-
-from flask import Flask, render_template, request, send_file, jsonify
+from flask import Blueprint, render_template, request, send_file, jsonify
 from modules.keyword_extraction import process_travel_description
 from modules.recommender import create_integrated_recommender
 from modules.itinerary_generator import ItineraryGenerator
@@ -11,17 +10,15 @@ from docx import Document
 from io import BytesIO
 from docx.shared import Inches
 from dotenv import load_dotenv
-
 from docx.shared import Pt
 from docx.oxml.ns import qn
 from docx.oxml import OxmlElement
-
 from modules.constants import VALID_LOCATIONS
 
 load_dotenv()
 
-app = Flask(__name__)
-app.secret_key = os.getenv('SECRET_KEY', 'supersecretkey')
+# Create a Blueprint for the Itinerary component
+itinerary_blueprint = Blueprint('itinerary', __name__, template_folder='templates', static_folder='static')
 
 # Helper function to load activities
 def load_location_activities():
@@ -32,7 +29,7 @@ def load_location_activities():
         location_activities[row['Location'].lower()] = activities
     return location_activities
 
-@app.route('/', methods=['GET', 'POST'])
+@itinerary_blueprint.route('/', methods=['GET', 'POST'])
 def index():
     if request.method == 'POST':
         try:
@@ -79,7 +76,7 @@ def index():
     return render_template('index.html', 
                          locations=sorted([loc.title() for loc in VALID_LOCATIONS]))
 
-@app.route('/generate', methods=['POST'])
+@itinerary_blueprint.route('/generate', methods=['POST'])
 def generate():
     try:
         # Collect selected activities
@@ -184,10 +181,6 @@ def generate():
                     for run in paragraph.runs:
                         run.font.name = 'Calibri'
 
-        
-                
-                
-                
         # Add fees table if available
         if itinerary_data.get('fees'):
             doc.add_paragraph()  # Add spacing
@@ -220,13 +213,11 @@ def generate():
                         for run in paragraph.runs:
                             run.font.name = 'Calibri'
                     
-                 
         # Add additional content from another document
         additional_doc = Document('./resources/additional_details.docx')
         for element in additional_doc.element.body:
             doc.element.body.append(element)   
 
-        
         # Save to bytes buffer
         buffer = BytesIO()
         doc.save(buffer)
@@ -245,6 +236,3 @@ def generate():
     except Exception as e:
         print(f"Error generating itinerary: {str(e)}")
         return jsonify({'error': 'Failed to generate itinerary'}), 500
-
-if __name__ == '__main__':
-    app.run(debug=True)
