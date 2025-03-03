@@ -275,8 +275,8 @@
 }
 
 
-/*** Testimonial ***/
-.testimonial-carousel::before {
+/*** Recommendations ***/
+.rec-carousel::before {
     position: absolute;
     content: "";
     top: 0;
@@ -287,7 +287,7 @@
     z-index: 1;
 }
 
-.testimonial-carousel::after {
+.rec-carousel::after {
     position: absolute;
     content: "";
     top: 0;
@@ -299,55 +299,68 @@
 }
 
 @media (min-width: 768px) {
-    .testimonial-carousel::before,
-    .testimonial-carousel::after {
+    .rec-carousel::before,
+    .rec-carousel::after {
         width: 200px;
     }
 }
 
 @media (min-width: 992px) {
-    .testimonial-carousel::before,
-    .testimonial-carousel::after {
+    .rec-carousel::before,
+    .rec-carousel::after {
         width: 300px;
     }
 }
 
-.testimonial-carousel .owl-item .testimonial-item,
-.testimonial-carousel .owl-item.center .testimonial-item * {
+.rec-carousel .owl-item .rec-item,
+.rec-carousel .owl-item.center .rec-item * {
     transition: .5s;
 }
 
-.testimonial-carousel .owl-item.center .testimonial-item {
+.rec-carousel .owl-item.center .rec-item {
     background: var(--primary) !important;
     border-color: var(--primary) !important;
 }
 
-.testimonial-carousel .owl-item.center .testimonial-item * {
+.rec-carousel .owl-item.center .rec-item * {
     color: #FFFFFF !important;
 }
 
-.testimonial-carousel .owl-dots {
+.rec-carousel .owl-dots {
     margin-top: 24px;
     display: flex;
     align-items: flex-end;
     justify-content: center;
 }
 
-.testimonial-carousel .owl-dot {
+.rec-carousel .owl-dot {
     position: relative;
     display: inline-block;
     margin: 0 5px;
     width: 15px;
     height: 15px;
-    border: 1px solid #CCCCCC;
+    border: 1px solid #CCCCCC !important;
     border-radius: 15px;
     transition: .5s;
 }
 
-.testimonial-carousel .owl-dot.active {
+.rec-carousel .owl-dot.active {
     background: var(--primary);
     border-color: var(--primary);
 }
+
+.rec-carousel img {
+    width: 100% !important;
+    max-width: 400px !important;
+    height: 200px !important;
+    object-fit: cover !important;
+    border-radius: 10px !important;
+
+}
+.no-bg {
+    background-color: transparent !important;
+}
+
 
 /*** Footer ***/
 .footer .btn.btn-social {
