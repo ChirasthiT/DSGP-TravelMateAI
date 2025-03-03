@@ -6,14 +6,10 @@
     <title>Tourist - Travel Mate Home</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-    <!-- Customized Bootstrap Stylesheet -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css"/>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
-     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-
-    <!-- Template Stylesheet -->
-<!--    <link rel="stylesheet" href="{{ url_for('static', filename='Main.css') }}">-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="../static/Main.css">
 
 
@@ -47,8 +43,8 @@
                     <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Services</a>
                         <div class="dropdown-menu m-0">
-                            <a href="" class="dropdown-item">location Identification</a>
-                            <a href="" class="dropdown-item">Travel plan itinerary</a>
+                            <a href="" class="dropdown-item">Location Identification</a>
+                            <a href="" class="dropdown-item">Travel Plan Itinerary</a>
                             <a href="" class="dropdown-item">Accommodation</a>
                             <a href="" class="dropdown-item">Helper</a>
                         </div>
@@ -120,88 +116,51 @@
 
     <!-- Services Start -->
     <div class="container-xxl py-5">
-            <div class="container">
-                <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
-                    <h6 class="section-title bg-white text-center text-primary px-3">Services</h6>
-                    <h1 class="mb-5">Our Services</h1>
+        <div class="container">
+            <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
+                <h6 class="section-title bg-white text-center text-primary px-3">Services</h6>
+                <h1 class="mb-5">Our Services</h1>
+            </div>
+            <div class="row g-4">
+                <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.1s">
+                    <div class="service-item rounded pt-3">
+                        <div class="p-4">
+                            <i class="fa fa-3x fa-map-marker-alt text-primary mb-4"></i>
+                            <h5><a href="{{ url_for('li.home') }}" class="btn btn-primary">Location Identification</a></h5>
+                            <p>Identify and explore various locations with ease using our AI-powered location identification service.</p>
+                        </div>
+                    </div>
                 </div>
-                <div class="row g-4">
-                    <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.1s">
-                        <div class="service-item rounded pt-3">
-                            <div class="p-4">
-                                <i class="fa fa-3x fa-globe text-primary mb-4"></i>
-                                <h5>Chat bot</h5>
-                                <p>Text Text Text Text Text Text Text Text Text Text Text Text Text Text</p>
-                            </div>
-                            <
+                <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.3s">
+                    <div class="service-item rounded pt-3">
+                        <div class="p-4">
+                            <i class="fa fa-3x fa-shopping-cart text-primary mb-4"></i>
+                            <h5><a href="{{ url_for('feature2') }}" class="btn btn-secondary">E-commerce</a></h5>
+                            <p>Discover and browse a wide range of products and services tailored to your travel needs.</p>
                         </div>
                     </div>
-                    <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.3s">
-                        <div class="service-item rounded pt-3">
-                            <div class="p-4">
-                                <i class="fa fa-3x fa-hotel text-primary mb-4"></i>
-                                <h5>Hotel Reservation</h5>
-                                <p>Text Text Text Text Text Text Text Text Text Text Text Text Text Text</p>
-                            </div>
+                </div>
+                <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.5s">
+                    <div class="service-item rounded pt-3">
+                        <div class="p-4">
+                            <i class="fa fa-3x fa-calendar-alt text-primary mb-4"></i>
+                            <h5><a href="#" class="btn btn-success">Itinerary Building</a></h5>
+                            <p>Create personalized travel itineraries with our AI-driven itinerary building service.</p>
                         </div>
                     </div>
-                    <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.5s">
-                        <div class="service-item rounded pt-3">
-                            <div class="p-4">
-                                <i class="fa fa-3x fa-user text-primary mb-4"></i>
-                                <h5>Travel Guides</h5>
-                                <p>Text Text Text Text Text Text Text Text Text Text Text Text Text Text</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.7s">
-                        <div class="service-item rounded pt-3">
-                            <div class="p-4">
-                                <i class="fa fa-3x fa-cog text-primary mb-4"></i>
-                                <h5>Event Management</h5>
-                                <p>Text Text Text Text Text Text Text Text Text Text Text Text Text Text</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.1s">
-                        <div class="service-item rounded pt-3">
-                            <div class="p-4">
-                                <i class="fa fa-3x fa-globe text-primary mb-4"></i>
-                                <h5>Chat bot</h5>
-                                <p>Text Text Text Text Text Text Text Text Text Text Text Text Text Text</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.3s">
-                        <div class="service-item rounded pt-3">
-                            <div class="p-4">
-                                <i class="fa fa-3x fa-hotel text-primary mb-4"></i>
-                                <h5>Hotel Reservation</h5>
-                                <p>Text Text Text Text Text Text Text Text Text Text Text Text Text Text</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.5s">
-                        <div class="service-item rounded pt-3">
-                            <div class="p-4">
-                                <i class="fa fa-3x fa-user text-primary mb-4"></i>
-                                <h5>Travel Guides</h5>
-                                <p>Text Text Text Text Text Text Text Text Text Text Text Text Text Text</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.7s">
-                        <div class="service-item rounded pt-3">
-                            <div class="p-4">
-                                <i class="fa fa-3x fa-cog text-primary mb-4"></i>
-                                <h5>Event Management</h5>
-                                <p>Text Text Text Text Text Text Text Text Text Text Text Text Text Text</p>
-                            </div>
+                </div>
+                <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.7s">
+                    <div class="service-item rounded pt-3">
+                        <div class="p-4">
+                            <i class="fa fa-3x fa-life-ring text-primary mb-4"></i>
+                            <h5><a href="#" class="btn btn-danger">Emergency Helper</a></h5>
+                            <p>Get instant alerts and emergency support with our reliable emergency helper service.</p>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
     <!-- Services End -->
 
     <!-- Footer Start -->
