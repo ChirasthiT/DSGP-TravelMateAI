@@ -68,7 +68,7 @@
                 <div class="row justify-content-center py-5">
                     <div class="col-lg-10 pt-lg-5 mt-lg-5 text-center">
                         <h1 class="display-3 text-white animated slideInDown">Personalized Recommendations Just for You</h1>
-                        <p class="lead text-white">Discover top-rated hotels, restaurants, and attractions tailored to your preferences. Let Travel Mate AI guide you to the best experiences!</p>
+                        <p class="lead text-white">Discover top-rated hotels and restaurants tailored to your preferences. Let Travel Mate AI guide you to the best experiences!</p>
 <!--                            <nav aria-label="breadcrumb">-->
 <!--                                <ol class="breadcrumb justify-content-center">-->
 <!--                                    <li class="breadcrumb-item text-white active" aria-current="page"><a>Services</a></li>-->
@@ -101,9 +101,17 @@
             </div>
             <!-- Spinner Container end -->
             <div id="recommendation" class="owl-carousel rec-carousel position-relative bg-white background-color: bg-transparent">
+            </div>
 
-
-
+            <!-- Recommendation Details Modal -->
+            <div id="recommendation-modal" class="modal">
+                <div class="modal-content">
+                    <span class="close" onclick="closeModal()">&times;</span>
+                    <img id="modal-image" src="" alt="Recommendation Image">
+                    <h2 id="modal-title"></h2>
+                    <p><i class="fa fa-map-marker-alt me-2"></i><span id="modal-address"></span></p>
+                    <p><strong>Rating:</strong> <span id="modal-rating"></span></p>
+                </div>
             </div>
         </div>
     </div>
