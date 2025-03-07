@@ -1,217 +1,314 @@
 .frame {
   background-color: #ffffff;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: center;
+  align-items: center;
   width: 100%;
+  height: 100vh;
+  overflow: hidden;
 }
 
 .frame .overlap-group-wrapper {
   background-color: #ffffff;
-  width: 1295px;
-  height: 1920px;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .frame .overlap-group {
   position: relative;
-  height: 1923px;
-  top: -3px;
+  width: 100%;
+  height: 100%;
 }
 
 .frame .background-mask {
   position: absolute;
-  width: 1295px;
-  height: 1920px;
+  width: 100%;
+  height: 100%;
   top: 0;
   left: 0;
-  background-color: #a5a5a5;
+  background: url("/static/img/landing_background.svg") no-repeat center center / cover;
 }
 
 .frame .image {
   position: absolute;
-  width: 1295px;
-  height: 1920px;
-  top: 3px;
+  width: 100%;
+  height: 100%;
+  top: 0;
   left: 0;
   object-fit: cover;
 }
 
 .frame .travelmate-AI {
   position: absolute;
-  width: 915px;
-  height: 108px;
-  top: 435px;
-  left: 170px;
+  width: 35%;
+  height: auto;
+  top: 15%;
+  left: 32.5%;
 }
 
 .frame .text-wrapper {
   position: absolute;
-  width: 807px;
-  top: 333px;
-  left: 228px;
+  width: 45%;
+  top: 5%;
+  left: 27.5%;
   font-family: "Inter-Black", Helvetica;
   font-weight: 900;
   color: #000000;
-  font-size: 48px;
+  font-size: 1.8vw;
   text-align: center;
   letter-spacing: 0;
-  line-height: 28px;
+  line-height: 1.2;
 }
 
 .frame .logo {
   position: absolute;
-  width: 439px;
-  height: 84px;
-  top: 63px;
-  left: 42px;
+  height: auto;
+  top: 3%;
+  left: 3%;
+  width: 8%; /* scale down the logo */
 }
 
 .frame .div {
   position: absolute;
-  width: 437px;
+  width: 80%;
   top: 0;
   left: 0;
-  font-family: "Plus Jakarta Sans-ExtraBold", Helvetica;
-  font-weight: 800;
-  color: var(--gray-900);
-  font-size: 48px;
-  letter-spacing: 3.00px;
-  line-height: 30px;
 }
 
 .frame .buttons {
   position: absolute;
-  width: 668px;
-  height: 118px;
-  top: 1331px;
-  left: 314px;
-}
-
-.frame .button-primary-with {
+  width: 20%;
+  top: 60%;
+  left: 40%;
   display: flex;
   flex-direction: column;
-  width: 668px;
-  height: 118px;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  padding: 16px;
-  position: relative;
-  background-color: var(--color-background-utilities-scrim);
-  border-radius: 20px;
-}
-
-.frame .button-name-wrapper {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 9px;
-  position: relative;
-  flex: 0 0 auto;
-}
-
-.frame .button-name {
-  position: relative;
-  width: fit-content;
-  margin-top: -1.00px;
-  font-family: "Plus Jakarta Sans-Bold", Helvetica;
-  font-weight: 700;
-  color: #000000;
-  font-size: 48px;
-  text-align: right;
-  letter-spacing: 0;
-  line-height: 24px;
-  white-space: nowrap;
-}
-
-.frame .sign-up {
-  display: flex;
-  flex-direction: column;
-  width: 668px;
-  height: 118px;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  padding: 20px 16px;
-  position: absolute;
-  top: 1518px;
-  left: 314px;
-  background-color: var(--color-background-utilities-scrim);
-  border-radius: 10px;
-  overflow: hidden;
-}
-
-.frame .div-wrapper {
-  all: unset;
-  box-sizing: border-box;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 9px;
-  position: relative;
-  flex: 0 0 auto;
-}
-
-.frame .button {
-  all: unset;
-  box-sizing: border-box;
-  position: relative;
-  width: fit-content;
-  margin-top: -1.00px;
-  font-family: "Plus Jakarta Sans-Bold", Helvetica;
-  font-weight: 700;
-  color: #000000;
-  font-size: 48px;
-  text-align: right;
-  letter-spacing: 0;
-  line-height: 28px;
-  white-space: nowrap;
+  gap: 20px;
 }
 
 .frame .explore-sri-lanka {
   position: absolute;
-  width: 1044px;
-  top: 672px;
-  left: 126px;
-  font-family: "Plus Jakarta Sans-Bold", Helvetica;
+  width: 45%;
+  top: 40%;
+  left: 27.5%;
+  font-family: "Radio Canada Big", Helvetica;
   font-weight: 700;
   color: #ffffff;
-  font-size: 48px;
+  font-size: 1.2vw;
   text-align: center;
-  line-height: 60px;
+  line-height: 1.2;
 }
 
 .frame .span {
-  letter-spacing: 0.48px;
+  letter-spacing: 0.1vw;
 }
 
 .frame .text-wrapper-2 {
-  letter-spacing: 1.44px;
+  letter-spacing: 0.2vw;
 }
 
 .frame .travel-smarter {
   position: absolute;
-  width: 752px;
-  height: 70px;
-  top: 1721px;
-  left: 268px;
+  width: 30%; /* scale down the travel smarter image */
+  height: auto;
+  top: 88%;
+  left: 32.5%;
 }
 
 .frame .avatar {
   position: absolute;
-  width: 151px;
-  height: 126px;
-  top: 21px;
-  left: 1092px;
+  width: 7%;
+  height: auto;
+  top: 3%;
+  left: 90%;
   border-radius: var(--size-radius-full);
   overflow: hidden;
 }
 
 .frame .shape {
   position: absolute;
-  width: 40px;
-  height: 40px;
-  top: 43px;
-  left: 56px;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
   object-fit: cover;
+}
+
+@media (max-width: 768px) {
+  .frame {
+    flex-direction: column;
+    height: auto;
+  }
+
+  .frame .overlap-group-wrapper {
+    width: 100%;
+    height: auto;
+  }
+
+  .frame .overlap-group {
+    height: auto;
+    position: relative; /* ensure elements are visible on mobile */
+  }
+
+  .frame .image {
+    width: 100%;
+    height: auto;
+  }
+
+  .frame .travelmate-AI {
+    width: 80%;
+    height: auto;
+    top: 20%;
+    left: 10%;
+  }
+
+  .frame .text-wrapper {
+    width: 80%;
+    top: 15%;
+    left: 10%;
+    font-size: 18px;
+  }
+
+  .frame .buttons {
+    position: static;
+    width: 80%;
+    margin: 40px auto 0;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .frame .explore-sri-lanka {
+    width: 90%;
+    top: auto;
+    left: 5%;
+    font-size: 18px;
+  }
+
+  .frame .travel-smarter {
+    width: 70%;
+    top: auto;
+    left: 10%;
+  }
+
+  .frame .avatar {
+    width: 50px;
+    height: 50px;
+    top: 10px;
+    left: auto;
+    right: 10px;
+  }
+
+  .frame .shape {
+    width: 25px;
+    height: 25px;
+  }
+
+  .frame .logo {
+    width: 15%; /* adjust logo size on mobile if needed */
+  }
+
+  .background-mask {
+    background-size: cover; /* ensure background scales on mobile */
+  }
+}
+
+/* Popup styles */
+.popup {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgb(0,0,0);
+  background-color: rgba(0,0,0,0.4);
+}
+
+.popup-content {
+  background-color: #fefefe;
+  margin: 15% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+  max-width: 400px;
+  border-radius: 10px;
+}
+
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.popup-content h2 {
+  font-family: "Plus Jakarta Sans-Bold", Helvetica;
+  font-size: 18px;
+  margin-bottom: 20px;
+}
+
+.popup-content form {
+  display: flex;
+  flex-direction: column;
+}
+
+.popup-content label {
+  font-family: "Plus Jakarta Sans-Regular", Helvetica;
+  font-size: 14px;
+  margin-bottom: 5px;
+}
+
+.popup-content input {
+  padding: 10px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.popup-content button {
+  padding: 10px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.popup-content button:hover {
+  background-color: #0056b3;
+}
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--color-background-utilities-scrim);
+  border-radius: 20px;
+  font-size: 1.5vw;
+  font-family: "Plus Jakarta Sans-Bold", Helvetica;
+  color: #000;
+  padding: 16px 24px;
+  cursor: pointer;
+}
+
+.button-primary-with,
+.button-name-wrapper,
+.button-name,
+.div-wrapper {
+  display: none; /* removing unused classes */
 }

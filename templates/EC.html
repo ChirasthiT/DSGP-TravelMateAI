@@ -1,81 +1,177 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Product Recommendations</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css">
-</head>
-<body>
-    <div class="container my-5">
-        <h1 class="text-center">Product Recommendation System</h1>
 
-        <!-- Search Box to input product keywords -->
-        <div class="row justify-content-center my-4">
-            <div class="col-md-6">
-                <div class="input-group">
-                    <input type="text" id="searchBox" class="form-control" placeholder="Enter keywords (e.g., waterproof, phone)">
-                    <button class="btn btn-primary" onclick="generateRec()">Search</button>
+<head>
+    <meta charset="utf-8">
+    <title>Tourist - Travel Mate Home</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css"/>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
+
+
+
+    <!-- Template Stylesheet -->
+<!--    <link rel="stylesheet" href="{{ url_for('static', filename='Main.css') }}">-->
+    <link rel="stylesheet" href="../static/Main.css">
+
+
+</head>
+
+<body>
+
+    <!-- Spinner Start -->
+    <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+        <div class="spinner-border text-primary" style="width: 3rem; height: 3rem;" >
+        </div>
+    </div>
+    <!-- Spinner End -->
+
+    <!-- Navbar -->
+    <div class="container-fluid position-relative p-0">
+        <nav class="navbar navbar-expand-lg navbar-light px-4 px-lg-5 py-3 py-lg-0">
+            <a href="" class="navbar-brand p-0">
+                <h1 class="text-primary m-0"><i class="fa fa-map-marker-alt me-3"></i>Travel Mate</h1>
+                <!-- <img src="img/logo.png" alt="Logo"> -->
+            </a>
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+                <span class="fa fa-bars"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <div class="navbar-nav ms-auto py-0">
+                    <a href="Main.html" class="nav-item nav-link active ">Home</a>
+                    <a href="About.html" class="nav-item nav-link">About</a>
+                    <div class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Services</a>
+                        <div class="dropdown-menu m-0">
+                            <a href="" class="dropdown-item">location Identification</a>
+                            <a href="" class="dropdown-item">Travel plan itinerary</a>
+                            <a href="" class="dropdown-item">Accommodation</a>
+                            <a href="" class="dropdown-item">Helper</a>
+                        </div>
+                    </div>
+                    <a href="Contact.html" class="nav-item nav-link">Contact</a>
+                </div>
+                <a href="" class="btn btn-primary rounded-pill py-2 px-4">Register</a>
+            </div>
+        </nav>
+
+        <div class="container-fluid bg-primary mb-5 hero-header">
+            <div class="container py-5">
+                <div class="row justify-content-center py-5">
+                    <div class="col-lg-10 pt-lg-5 mt-lg-5 text-center">
+                        <h1 class="display-3 text-white animated slideInDown">Welcome to Travel Mate AI</h1>
+                        <p class="lead text-white">Your ultimate travel companion for exploring the world</p>
+
+<!--                        <nav aria-label="breadcrumb">-->
+<!--                            <ol class="breadcrumb justify-content-center">-->
+<!--                                <li class="breadcrumb-item text-white active" aria-current="page">Home/</li>-->
+<!--                            </ol>-->
+<!--                        </nav>-->
+
+                    </div>
                 </div>
             </div>
         </div>
-
-        <!-- Display Recommendations -->
-        <div id="recommendation" class="mt-4"></div>
     </div>
+    <!-- Navbar End -->
 
-    <script>
-        async function generateRec() {
-            try {
-                // Get search keyword from the input box
-                const searchQuery = document.getElementById('searchBox').value.trim();
-                if (!searchQuery) {
-                    throw new Error("Please enter a keyword to search.");
-                }
 
-                // Send the search query as a query parameter in the GET request
-                const response = await fetch(`http://127.0.0.1:5000/recommend?keywords=${encodeURIComponent(searchQuery)}`, {
-                    method: 'GET'
-                });
+<!-- Recommendations Start -->
+    <div class="container-xxl py-5 wow fadeInUp" data-wow-delay="0.1s">
+        <div class="container">
+            <div class="text-center">
+                <h6 class="section-title bg-white text-center text-primary px-3">Recommendations</h6>
+                <h1 class="mb-5">Top Picks for You</h1>
+            </div>
+            <div class="owl-carousel recommendation-carousel position-relative" id="recommendation"></div>
+        </div>
+    </div>
+<!-- Recommendations End -->
 
-                // Check if the response is OK
-                if (!response.ok) {
-                    throw new Error(`Error: ${response.status} - ${response.statusText}`);
-                }
+    <!-- Footer Start -->
+    <div class="container-fluid bg-dark text-light footer pt-5 mt-5 wow fadeIn" data-wow-delay="0.1s">
+        <div class="container py-5">
+            <div class="row g-5">
+                <div class="col-lg-3 col-md-6">
+                    <h4 class="text-white mb-3">Company</h4>
+                    <a class="btn btn-link" href="">About Us</a>
+                    <a class="btn btn-link" href="Contact.html">Contact Us</a>
+                    <a class="btn btn-link" href="">Privacy Policy</a>
+                    <a class="btn btn-link" href="">Terms & Condition</a>
+                    <a class="btn btn-link" href="">FAQs & Help</a>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <h4 class="text-white mb-3">Our Team</h4>
+                    <p class="text-white mb-1"><i class="fas fa-user-tie me-2"></i>Member 1</p>
+                    <p class="text-white mb-1"><i class="fas fa-user-tie me-2"></i>Member 2</p>
+                    <p class="text-white mb-1"><i class="fas fa-user-tie me-2"></i>Member 3</p>
+                    <p class="text-white mb-1"><i class="fas fa-user-tie me-2"></i>Member 4</p>
+                </div>
 
-                const data = await response.json();
-                console.log(data);
+                <div class="col-lg-3 col-md-6">
+                    <h4 class="text-white mb-3">Follow us</h4>
+                    <div class="row">
+                    <a class="btn btn-outline-light btn-social me-2" href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a class="btn btn-outline-light btn-social me-2" href="#"><i class="fab fa-twitter"></i></a>
+                    <a class="btn btn-outline-light btn-social me-2" href="#"><i class="fab fa-instagram"></i></a>
+                    <a class="btn btn-outline-light btn-social me-2" href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <h4 class="text-white mb-3">Contact</h4>
+                    <p class="mb-2"><i class="fa fa-map-marker-alt me-3"></i>123 Street, New York, USA</p>
+                    <p class="mb-2"><i class="fa fa-phone-alt me-3"></i>+012 345 67890</p>
+                    <p class="mb-2"><i class="fa fa-envelope me-3"></i>info@example.com</p>
+                </div>
 
-                // Check if recommendations exist
-                if (!data.recommendations || data.recommendations.length === 0) {
-                    throw new Error("No recommendations found.");
-                }
-
-                // Generate the recommendation list
-                let recommendationsList = "<div class='list-group'>";
-                data.recommendations.forEach(product => {
-                    recommendationsList += `
-                        <div class="list-group-item">
-                            <h5 class="mb-1">${product["Product Name"]}</h5>
-                            <p class="mb-1">Category: ${product.Category}</p>
-                            <p class="mb-1">Description: ${product.Description}</p>
-                            <small>Price: $${product.Price}</small>
+            </div>
+        </div>
+        <div class="container">
+            <div class="copyright">
+                <div class="row">
+                    <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
+                        &copy; <a class="border-bottom" href="#">Travel Mate</a>, All Right Reserved.
+                    </div>
+                    <div class="col-md-6 text-center text-md-end">
+                        <div class="footer-menu">
+                            <a href="">Home</a>
+                            <a href="">Cookies</a>
+                            <a href="">Help</a>
+                            <a href="">FQAs</a>
                         </div>
-                    `;
-                });
-                recommendationsList += "</div>";
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Footer End -->
 
-                document.getElementById('recommendation').innerHTML = recommendationsList;
-            } catch (error) {
-                document.getElementById('recommendation').innerHTML = `
-                    <div class="alert alert-danger">${error.message}</div>
-                `;
-            }
-        }
 
-    </script>
+    <!-- Back to Top -->
+    <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
 
+
+    <!-- JavaScript Libraries -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+
+
+    <!-- Template Javascript -->
+<!-- <script src="{{ url_for('static', filename='Main.js') }}"></script>-->
+    <script src="../static/EC.js"></script>
+    <script src="../static/Main.js"></script>
 
 
 </body>
+
 </html>
