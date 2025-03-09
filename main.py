@@ -13,17 +13,17 @@ app.secret_key = 'key'
 app.register_blueprint(li_blueprint, url_prefix='/location-identification')
 app.register_blueprint(frontend_blueprint, url_prefix='/auth')
 app.register_blueprint(EC_blueprint, url_prefix='/recommendation')
-app.register_blueprint(itinerary_blueprint, url_prefix='/itinerary')  # Register Itinerary Blueprint
+app.register_blueprint(itinerary_blueprint, url_prefix='/itinerary') 
 
 # MongoDB Connection
 client = MongoClient('mongodb+srv://admin:admindsgp66@dsgp.e5yrm.mongodb.net/')
 db = client['travelmateai']
 
-# Assign MongoDB to Blueprints
+# db assignment
 li_blueprint.db = db
 EC_blueprint.db = db
 frontend_blueprint.db = db
-itinerary_blueprint.db = db  # Assign MongoDB to Itinerary Blueprint
+itinerary_blueprint.db = db 
 
 # Routes
 @app.route('/')
