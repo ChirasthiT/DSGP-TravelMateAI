@@ -74,18 +74,38 @@ function renderRecommendations(recommendations, containerId) {
     recommendations.forEach((item) => {
         const recommendationItem = document.createElement('div');
         recommendationItem.className = 'rec-item bg-white text-center border p-4';
+        recommendationItem.style.cursor = "pointer";
 
         const imgSrc = item.Image ? `data:image/jpeg;base64,${item.Image}` : 'default-image.jpg';
 
         recommendationItem.innerHTML = `
             <img class="bg-white no-bg rounded shadow p-1 mx-auto mb-3" src="${imgSrc}" style="width: 120px; height: 120px; object-fit: cover;">
-            <h5 class="mb-2">${item.Name}</h5>
-            <p>${item.Address || 'No address provided'}</p>
+            <h5 class="mb-2">${item.Name.toUpperCase()}</h5>
+            <p><i class="fa fa-map-marker-alt me-3"></i>${item.Address || 'No address provided'}</p>
             <p><strong>Rating:</strong> ${item.Rating ? getStarRating(item.Rating) : 'Not rated'}</p>
         `;
 
+        recommendationItem.onclick = function () {
+            openModal(item);
+        };
+
+
         recommendationDiv.appendChild(recommendationItem);
     });
+}
+
+function openModal(item) {
+    document.getElementById("modal-image").src = item.Image ? `data:image/jpeg;base64,${item.Image}` : 'default-image.jpg';
+    document.getElementById("modal-title").textContent = item.Name.toUpperCase();
+    document.getElementById("modal-address").textContent = item.Address || "No address provided";
+    document.getElementById("modal-rating").innerHTML = item.Rating ? getStarRating(item.Rating) : 'Not rated';
+
+    document.getElementById("recommendation-modal").style.display = "block";
+}
+
+// Function to close the modal
+function closeModal() {
+    document.getElementById("recommendation-modal").style.display = "none";
 }
 
 function getStarRating(rating) {
