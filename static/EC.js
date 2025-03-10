@@ -1,9 +1,13 @@
-document.addEventListener("DOMContentLoaded", function () {
+window.onload = function () {
     fetchRecommendations();
-});
+};
 
 async function fetchRecommendations() {
     try {
+        document.getElementById('loading-spinner').style.display = 'block';
+        document.getElementById('loading-spinner2').style.display = 'block';
+        document.getElementById('recommendation').innerHTML = '';
+        document.getElementById('recommendation2').innerHTML = '';
 
         const url = `http://127.0.0.1:5000/recommendation/recommend` ;
         const response = await fetch(url);
@@ -18,11 +22,24 @@ async function fetchRecommendations() {
         if (!data.recommendations || data.recommendations.length === 0) {
             throw new Error("No recommendations found.");
         }
+        document.getElementById('loading-spinner').style.display = 'none';
+        document.getElementById('loading-spinner2').style.display = 'none';
 
-        renderRecommendations(data.recommendations);
+        // Filter top 6 for each category
+        const accommodations = data.recommendations
+            .filter(item => item.Source.toLowerCase() === "accomodation")
+            .slice(0, 6);
+
+        const restaurants = data.recommendations
+            .filter(item => item.Source.toLowerCase() === "restaurant")
+            .slice(0, 6);
+
+        renderRecommendations(accommodations, 'recommendation');
+        renderRecommendations(restaurants, 'recommendation2');
+
 
         // Reinitialize Owl Carousel after content is added
-        $(".recommendation-carousel").owlCarousel({
+        $(".rec-carousel").owlCarousel({
             autoplay: true,
             smartSpeed: 1000,
             center: true,
@@ -50,31 +67,51 @@ async function fetchRecommendations() {
     }
 }
 
-function renderRecommendations(recommendations) {
-    const recommendationDiv = document.getElementById('recommendation');
+function renderRecommendations(recommendations, containerId) {
+    const recommendationDiv = document.getElementById(containerId);
     recommendationDiv.innerHTML = '';
 
     recommendations.forEach((item) => {
         const recommendationItem = document.createElement('div');
-        recommendationItem.className = 'recommendation-item bg-white text-center border p-4';
+        recommendationItem.className = 'rec-item bg-white text-center border p-4';
+        recommendationItem.style.cursor = "pointer";
 
         const imgSrc = item.Image ? `data:image/jpeg;base64,${item.Image}` : 'default-image.jpg';
 
         recommendationItem.innerHTML = `
-            <img class="bg-white rounded shadow p-1 mx-auto mb-3" src="${imgSrc}" style="width: 120px; height: 120px; object-fit: cover;">
-            <h5 class="mb-2">${item.Name}</h5>
-            <p>${item.Address || 'No address provided'}</p>
+            <img class="bg-white no-bg rounded shadow p-1 mx-auto mb-3" src="${imgSrc}" style="width: 120px; height: 120px; object-fit: cover;">
+            <h5 class="mb-2">${item.Name.toUpperCase()}</h5>
+            <p><i class="fa fa-map-marker-alt me-3"></i>${item.Address || 'No address provided'}</p>
             <p><strong>Rating:</strong> ${item.Rating ? getStarRating(item.Rating) : 'Not rated'}</p>
         `;
+
+        recommendationItem.onclick = function () {
+            openModal(item);
+        };
+
 
         recommendationDiv.appendChild(recommendationItem);
     });
 }
 
+function openModal(item) {
+    document.getElementById("modal-image").src = item.Image ? `data:image/jpeg;base64,${item.Image}` : 'default-image.jpg';
+    document.getElementById("modal-title").textContent = item.Name.toUpperCase();
+    document.getElementById("modal-address").textContent = item.Address || "No address provided";
+    document.getElementById("modal-rating").innerHTML = item.Rating ? getStarRating(item.Rating) : 'Not rated';
+
+    document.getElementById("recommendation-modal").style.display = "block";
+}
+
+// Function to close the modal
+function closeModal() {
+    document.getElementById("recommendation-modal").style.display = "none";
+}
+
 function getStarRating(rating) {
     const maxStars = 5;
     const fullStar = "★";
-    const halfStar = "½";
+    const halfStar = "☆";
     const emptyStar = "☆";
 
     let stars = "";

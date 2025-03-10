@@ -8,7 +8,8 @@
     <link rel="stylesheet" href="/static/style.css" />
     <style>
       .bigger-popup .popup-content {
-        width: 600px;
+        width: 80vw;
+        max-width: 800px;
         padding: 40px;
         font-size: 1.3rem;
         box-shadow: 0 0 25px rgba(0, 0, 0, 0.3);
@@ -35,7 +36,7 @@
               itineraries to tailored shopping recommendations, we’ve got you covered. Stay secure with our SOS feature
               offering instant alerts and emergency support</span>
           </p>
-          <img class="travel-smarter" src="/static/img/TravelsmarterTravelsaferTravelMateAI.svg"  alt="travelmate h2"/>
+          <img class="travel-smarter" src="/static/img/TravelsmarterTravelsaferTravelMateAI.svg"  alt="travelmate h2" style="width: 100%; max-width: 600px; margin: 0 auto; display: block;"/>
         </div>
       </div>
     </div>
@@ -62,6 +63,8 @@
         <input type="text" id="newUsername" required>
         <label>Password:</label>
         <input type="password" id="newPassword" required>
+        <label>Confirm Password:</label>
+        <input type="password" id="confirmPassword" required>
         <label>Email:</label>
         <input type="email" id="email" required>
         <button type="button" onclick="signupUser()">Sign Up</button>
@@ -113,9 +116,14 @@
       async function signupUser() {
         const newUsername = document.getElementById('newUsername').value;
         const newPassword = document.getElementById('newPassword').value;
+        const confirmPassword = document.getElementById('confirmPassword').value;
         const email = document.getElementById('email').value;
-        if (!newUsername || !newPassword || !email) {
+        if (!newUsername || !newPassword || !confirmPassword || !email) {
           alert('Please fill in all fields.');
+          return;
+        }
+        if (newPassword !== confirmPassword) {
+          alert('Passwords do not match.');
           return;
         }
         try {

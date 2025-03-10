@@ -5,7 +5,7 @@ frontend_blueprint = Blueprint('frontend', __name__)
 
 @frontend_blueprint.route('/main')
 def main():
-    return render_template('index.html')
+    return render_template('Main.html')
 
 
 @frontend_blueprint.route('/login', methods=['POST'])
