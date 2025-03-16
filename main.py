@@ -5,6 +5,7 @@ from E_Commerce.API.EC_api import EC_blueprint
 from Em_Helper.API.sos_blueprint import sos_blueprint
 from Frontend.frontend import frontend_blueprint
 from Itenary.app import itinerary_blueprint
+from Em_Helper.API import eh_blueprint
 from pydoc import Helper
 
 app = Flask(__name__, template_folder='templates', static_folder='static')
@@ -16,6 +17,7 @@ app.register_blueprint(frontend_blueprint, url_prefix='/auth')
 app.register_blueprint(EC_blueprint, url_prefix='/recommendation')
 app.register_blueprint(sos_blueprint, url_prefix='/sos')
 app.register_blueprint(itinerary_blueprint, url_prefix='/itinerary') 
+app.register_blueprint(eh_blueprint, url_prefix='/emergency-helper')
 
 # MongoDB Connection
 client = MongoClient('mongodb+srv://admin:admindsgp66@dsgp.e5yrm.mongodb.net/')
@@ -45,9 +47,9 @@ def feature2():
 def feature3():
     return render_template('itinerary.html')
 
-# @app.route('/feature4')
-# def feature4():
-#     return "Feature 4 Page"
+@app.route('/emergency-helper.home') 
+def feature4():
+    return render_template('emergency_helper.html')
 
 if __name__ == '__main__':
     app.run(debug=True)
