@@ -2,9 +2,11 @@ from flask import Flask, render_template, session
 from pymongo import MongoClient
 from Location_Identification.li import li_blueprint
 from E_Commerce.API.EC_api import EC_blueprint
+from Em_Helper.API.sos_blueprint import sos_blueprint
 from Frontend.frontend import frontend_blueprint
 from Itenary.app import itinerary_blueprint
 from Em_Helper.API import eh_blueprint
+from pydoc import Helper
 
 app = Flask(__name__, template_folder='templates', static_folder='static')
 app.secret_key = 'key'
@@ -13,6 +15,7 @@ app.secret_key = 'key'
 app.register_blueprint(li_blueprint, url_prefix='/location-identification')
 app.register_blueprint(frontend_blueprint, url_prefix='/auth')
 app.register_blueprint(EC_blueprint, url_prefix='/recommendation')
+app.register_blueprint(sos_blueprint, url_prefix='/sos')
 app.register_blueprint(itinerary_blueprint, url_prefix='/itinerary') 
 app.register_blueprint(eh_blueprint, url_prefix='/emergency-helper')
 
@@ -24,6 +27,7 @@ db = client['travelmateai']
 li_blueprint.db = db
 EC_blueprint.db = db
 frontend_blueprint.db = db
+sos_blueprint.db = db
 itinerary_blueprint.db = db 
 
 # Routes

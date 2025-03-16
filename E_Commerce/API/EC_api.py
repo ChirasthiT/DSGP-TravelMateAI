@@ -1,11 +1,4 @@
-from flask import Flask, request, jsonify, render_template, abort
-from flask_cors import CORS
-from werkzeug.utils import secure_filename
-from urllib.parse import quote
-import os
-from flask_pymongo import PyMongo
-from pydantic import BaseModel
-import pandas as pd
+
 from flask import Blueprint, request, jsonify, render_template
 from werkzeug.utils import secure_filename
 import os
@@ -13,13 +6,12 @@ from pymongo import MongoClient
 from gridfs import GridFS
 import base64
 import os
+from flask import session
+
 
 from E_Commerce.API.Recommender import Recommender
 
 EC_blueprint = Blueprint('EC', __name__, template_folder='templates', static_folder='static')
-client = MongoClient('mongodb+srv://admin:admindsgp66@dsgp.e5yrm.mongodb.net/')
-db = client['travelmateai']
-
 
 @EC_blueprint.route('/EC.home')
 def home():
@@ -27,9 +19,14 @@ def home():
 
 @EC_blueprint.route('/recommend', methods=['GET'])
 def recommend():
+    db = EC_blueprint.db
 
-    user_budget = 'low'
-    user_district = 'kandy'
+    if 'user_email' not in session:
+        print("User not logged in")
+
+    userEmail = session['user_email']  # Retrieve username from session
+    user_budget = get_user_Budget(userEmail)
+    user_district = get_user_district(userEmail)
 
     # Fetch and preprocess data
     recommender = Recommender()
@@ -71,6 +68,7 @@ def go_back():
 
 
 def get_image_base64(image_name):
+    db = EC_blueprint.db
     fs = GridFS(db)
     images_metadata_collection = db['images_EC']
     metadata = images_metadata_collection.find_one({'image_name': image_name})
@@ -88,3 +86,14 @@ def get_image_base64(image_name):
     except Exception as e:
         print(f"Error retrieving image {image_name}: {e}")
         return None
+
+def get_user_Budget(user_name):
+    db = EC_blueprint.db
+    user_db_collection = db["user"]
+    user_budget = user_db_collection.find_one({"email": user_name}, {"_id": 0})
+    return user_budget['budget']
+def get_user_district(user_name):
+    db = EC_blueprint.db
+    user_db_collection = db["user"]
+    user_budget = user_db_collection.find_one({"email": user_name}, {"_id": 0})
+    return user_budget['district']
