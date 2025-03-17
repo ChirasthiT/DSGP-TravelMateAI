@@ -20,6 +20,9 @@ load_dotenv()
 # Create a Blueprint for the Itinerary component
 itinerary_blueprint = Blueprint('itinerary', __name__, template_folder='templates', static_folder='static')
 
+# MongoDB database will be assigned in main.py
+db = None
+
 # Helper function to load activities
 def load_location_activities():
     df = pd.read_csv('./data/Location_and_Activities (FINAL).csv', encoding='latin-1')
@@ -31,6 +34,9 @@ def load_location_activities():
 
 @itinerary_blueprint.route('/', methods=['GET', 'POST'])
 def index():
+    # Check if user is authenticated in session if needed
+    # user_id = session.get('user_id')
+    
     if request.method == 'POST':
         try:
             # Store form data
@@ -236,3 +242,16 @@ def generate():
     except Exception as e:
         print(f"Error generating itinerary: {str(e)}")
         return jsonify({'error': 'Failed to generate itinerary'}), 500
+
+# New route for saving itineraries if needed
+@itinerary_blueprint.route('/save', methods=['POST'])
+def save_itinerary():
+    # This would be implemented if we want to save itineraries to MongoDB
+    if db is None:
+        return jsonify({'error': 'Database connection not available'}), 500
+    
+    try:
+        # Implementation for saving itinerary to MongoDB would go here
+        return jsonify({'success': True}), 200
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500
