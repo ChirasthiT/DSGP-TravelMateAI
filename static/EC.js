@@ -19,20 +19,41 @@ async function fetchRecommendations() {
 
         const data = await response.json();
 
-        if (!data.recommendations || data.recommendations.length === 0) {
+        if (!data.CBrecommendations || data.CBrecommendations.length === 0) {
             throw new Error("No recommendations found.");
         }
         document.getElementById('loading-spinner').style.display = 'none';
         document.getElementById('loading-spinner2').style.display = 'none';
 
-        // Filter top 6 for each category
-        const accommodations = data.recommendations
-            .filter(item => item.Source.toLowerCase() === "accomodation")
-            .slice(0, 6);
+        console.log("CB-",data.CBrecommendations)
+        console.log("IBC-",data.IBCrecommendations)
 
-        const restaurants = data.recommendations
+
+         // Merge recommendations while removing duplicates
+        const uniqueRecommendations = new Map();
+
+        // Add content-based recommendations
+        data.CBrecommendations.forEach(item => {
+            uniqueRecommendations.set(item.Name.toLowerCase(), item);
+        });
+
+        // Add item-based recommendations (only if they don't already exist)
+        data.IBCrecommendations.forEach(item => {
+            if (!uniqueRecommendations.has(item.Name.toLowerCase())) {
+                uniqueRecommendations.set(item.Name.toLowerCase(), item);
+            }
+        });
+
+        const finalRecommendations = Array.from(uniqueRecommendations.values()).sort((a, b) => b.Rating - a.Rating);
+
+       // Separate accommodations and restaurants
+        const accommodations = finalRecommendations
+            .filter(item => item.Source.toLowerCase() === "accomodation")
+            .slice(0, 15);
+
+        const restaurants = finalRecommendations
             .filter(item => item.Source.toLowerCase() === "restaurant")
-            .slice(0, 6);
+            .slice(0, 15);
 
         renderRecommendations(accommodations, 'recommendation');
         renderRecommendations(restaurants, 'recommendation2');
@@ -86,13 +107,40 @@ function renderRecommendations(recommendations, containerId) {
         `;
 
         recommendationItem.onclick = function () {
+            console.log(item);
             openModal(item);
+            logClick(item)
         };
 
 
         recommendationDiv.appendChild(recommendationItem);
     });
 }
+
+function logClick(item) {
+
+        const budgetMapping = {
+            1: 'Low',
+            2: 'Medium',
+            3: 'High'
+        };
+        const budgetLabel = budgetMapping[item['Budget Level']] || 'unknown';
+        fetch('http://127.0.0.1:5000/recommendation/log_click', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                "name": item.Name,
+                "district": item.District,
+                "budget": budgetLabel,
+
+            })
+        })
+        .then(response => response.json())
+        .then(data => console.log("Click logged:", data))
+        .catch(error => console.error("Error logging click:", error));
+    }
 
 function openModal(item) {
     document.getElementById("modal-image").src = item.Image ? `data:image/jpeg;base64,${item.Image}` : 'default-image.jpg';
