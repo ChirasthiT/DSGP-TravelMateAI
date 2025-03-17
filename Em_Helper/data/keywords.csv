@@ -1,0 +1,529 @@
+Phrases,Risk Level,Keywords
+im lost and i dont know how to get back to my hotel,1,hotel know hotel
+i cant find my way and its getting dark i dont know anyone around here,0,getting dark dark dont
+i fell and injured my leg i cant move properly,0,injured leg fell injured
+im experiencing severe pain and need immediate medical help,2,severe pain pain need
+my passport and wallet have been stolen i dont have any money or id,1,wallet stolen passport wallet
+someone just took my bag with all my documents and phone inside,0,bag documents documents phone
+theres an earthquake happening and i dont know where to go for shelter,0,shelter theres earthquake
+floodwaters are rising quickly and i need help to find safety,2,floodwaters rising floodwaters
+someone is following me and i feel unsafe,0,feel unsafe unsafe
+im being harassed and i dont feel safe i need immediate assistance,0,im harassed harassed dont
+my car broke down on the highway and theres no help nearby,2,car broke broke highway
+the rental bike has stopped working and im stranded on a deserted road,1,bike stopped rental bike
+i slipped and hurt my ankle im alone and cant get up,0,hurt ankle slipped hurt
+i had a bad fall and am bleeding i need medical assistance right away,2,fall bleeding bleeding need
+i cant find my child in this crowded place theyve gone missing,0,child crowded gone missing
+ive lost my friend in the city and they dont have a phone,1,lost friend friend city
+i dont speak the language here and i need help urgently,2,help urgently urgently
+i need emergency assistance but i cant communicate with anyone around me,2,emergency assistance need emergency
+im feeling dizzy and nauseous and i might faint i need help,2,nauseous faint feeling dizzy
+im having trouble breathing and need immediate medical attention,0,trouble breathing breathing need
+i was bitten by an animal and i dont know if its dangerous,2,bitten animal bitten
+theres a wild animal nearby and im scared it might attack,2,animal nearby wild animal
+theres a fire in the building and i cant find an exit,2,building exit exit
+im trapped in a room with smoke i need help to escape,2,help escape smoke need
+the weather has suddenly turned severe and i cant find shelter,0,severe shelter shelter
+im stuck outside in a storm with no place to go,1,outside storm stuck outside
+someone attacked me and took my belongings i need the police,2,need police took belongings
+ive just been robbed and am in shock i need someone to come help,2,just robbed robbed
+i missed my flight and im stranded without a place to stay,1,missed flight im stranded
+my train was canceled and theres no way back to my hotel,0,train canceled canceled
+im lost in the forest and dont know which direction to go i need help asap,2,forest lost forest
+im completely lost in the city please send someone to help me find my way,2,city send lost city
+urgent my friend is unconscious and not responding need medical help immediately,2,friend unconscious unconscious responding
+im in severe pain and need a doctor right away please help,2,need doctor severe pain
+my passport and phone were stolen im stranded without id or money,1,phone stolen passport phone
+emergency all my belongings were stolen and i have no way to contact anyone,2,belongings stolen emergency belongings
+someone tried to attack me im in a dangerous area and feel unsafe,2,im dangerous dangerous area
+i was threatened by a stranger and now im in an unsafe place need police,2,threatened stranger need police
+there was an earthquake and i dont know if im safe here need to evacuate,0,need evacuate evacuate
+floodwaters are rising and i need help to get to a safe place immediately,2,floodwaters rising floodwaters
+i slipped and fell im injured and bleeding please send urgent care,2,injured bleeding slipped fell
+i have a serious injury and cant walk need help immediately,2,injury walk walk need
+i lost contact with my friend and cant find them please help locate them,2,help locate lost contact
+my child is missing and i need urgent help to find them,2,child missing missing
+im being stalked by someone and need urgent police assistance,2,stalked need urgent police
+im being harassed by someone and i dont feel safe need immediate help,2,im harassed harassed dont
+my car broke down on the road and im stranded with no help nearby,2,car broke stranded help
+my bike stopped working and im in an isolated area need assistance,0,bike stopped stopped working
+theres a storm and im trapped outside i cant find shelter,0,outside shelter trapped outside
+extreme weather conditions here i need help finding shelter quickly,2,finding shelter shelter
+theres a fire nearby and i dont know how to escape please send help,2,escape know escape
+im trapped in a building with fire need help getting out,2,trapped building im trapped
+i was bitten by an animal and i dont know if its venomous please help,2,venomous help venomous
+theres dangerous wildlife around and i feel at risk of an animal attack,2,dangerous wildlife risk animal
+i feel like im about to faint and need medical help,2,im faint faint
+im having difficulty breathing and need medical assistance immediately,0,difficulty breathing breathing need
+ive been robbed and i need the police and some assistance,2,need police police assistance
+someone stole my bag i need help contacting the police,2,stole bag contacting police
+i missed my bus and am now stranded with no money to get back,1,missed bus bus stranded
+im broke and stranded in a place i dont know please send help,2,broke stranded im broke
+i lost my purse while i was having lunch at the cafe,1,lost purse purse
+theres been a nuclear explosion please help immediately,2,nuclear explosion explosion help
+help someone just grabbed my backpack and ran away,2,grabbed backpack backpack ran
+im injured and need medication urgently is there a clinic nearby,0,medication urgently need medication
+sos ive fallen and cant move please send help now,2,ive fallen fallen send
+help my child has gone missing near the tuktuk stand,2,near tuktuk tuktuk stand
+i need urgent help the tuktuk driver is being aggressive and i feel unsafe,2,tuktuk driver driver aggressive
+im in trouble can anyone hear me its an emergency,2,hear emergency emergency
+please hurry someone stole my bag and i dont know what to do,0,stole bag hurry stole
+help me im unresponsive and feeling very sick i might faint,2,sick faint faint
+emergency a stranger is following me and im scared,2,stranger following emergency stranger
+i need help right away theres a lifethreatening situation at my location,2,lifethreatening situation situation location
+hi can someone call 911 i think ive been poisoned,0,ive poisoned poisoned
+help please my friend is unconscious and i need to get them to a hospital,2,friend unconscious unconscious need
+im lost in the city can someone help me find my way back to the hotel,2,way hotel hotel
+help ive had an accident and my leg is bleeding badly,2,leg bleeding bleeding badly
+sos i feel unsafe can you contact my mother right away,0,contact mother unsafe contact
+theres an emergency im stuck in an unknown area and my phone battery is dying,2,emergency im phone battery
+please help me my wallet and passport are missing i dont know what to do,2,passport missing wallet passport
+urgent ive spotted a fire nearby and its spreading quickly,2,nearby spreading spotted nearby
+emergency my phone is stolen and im stranded without cash or identification,2,phone stolen emergency phone
+help im being harassed on the street and need immediate assistance,2,harassed street im harassed
+urgent my travel partner is experiencing severe chest pain i need medical help,2,chest pain severe chest
+can anyone hear me im stuck on a hiking trail and lost my way,1,stuck hiking hiking trail
+help theres a dangerous animal near me and im scared to move,2,dangerous animal animal near
+im feeling sick and unresponsive i think i need medication urgently,0,medication urgently need medication
+theres been a robbery im injured and need help,2,robbery im robbery
+please help me ive been stranded after missing my train in a foreign city,2,missing train ive stranded
+someone is following me im scared and need help fast,2,following im scared need
+help ive fallen off my bike and cant move my arm,2,bike arm fallen bike
+im lost need help cant find my hotel,2,help hotel hotel
+lost my way cant get back to the hostel,1,way hostel hostel
+need directions im completely lost,1,need directions directions im
+cant find my way need help urgently,2,help urgently need help
+im stranded dont know anyone around here,1,im stranded stranded dont
+i fell and hurt my leg cant move pls help,2,hurt leg leg pls
+severe pain in my chest need doctor fast,0,pain chest doctor fast
+bitten by an animal dont know if its dangerous,2,bitten animal bitten
+i cant breathe someone help me now,2,breathe help breathe
+bleeding badly had an accident need urgent help,2,bleeding badly bleeding
+my bag was stolen need police now,2,bag stolen stolen need
+someone stole my passport and wallet need help,2,stole passport passport wallet
+im being followed feel unsafe pls send help,2,im followed feel unsafe
+i was harassed on the street need immediate assistance,0,harassed street harassed
+someone tried to attack me need urgent help,2,tried attack urgent help
+earthquake happening need to find shelter,0,need shelter earthquake happening
+floodwaters rising fast need safety now,0,floodwaters rising floodwaters
+trapped in a building with smoke help me escape,2,building smoke smoke help
+there is a fire dont know where to go,2,dont dont know
+stuck outside in a storm need help asap,2,outside storm stuck outside
+cant find my child in the crowd pls help,2,child crowd child
+my friend is missing dont know where they are,0,friend missing missing dont
+lost my group in the city need help finding them,2,lost group group city
+my kid is gone missing near the park pls hurry,0,near park kid gone
+lost contact with my travel partner need help,2,travel partner lost contact
+car broke down on the highway no help nearby,2,car broke broke highway
+my rental bike stopped working stranded on the road,1,bike stopped stopped working
+missed my bus stuck with no way back,1,missed bus bus stuck
+train got canceled need assistance to find transport,0,assistance transport train got
+bike stopped in an isolated area pls send help,2,bike stopped stopped isolated
+dont speak the language cant ask for help,2,ask help language ask
+need emergency assistance cant communicate here,2,emergency assistance need emergency
+cant talk properly need someone to help me now,2,talk properly talk
+unable to explain my issue need urgent help,2,urgent help explain issue
+dont understand signs around me completely lost,1,understand signs signs
+ayuda me perdi necesito ayuda urgente spanish,0,necesito ayuda urgente spanish
+je suis perdu besoin daide immediatement french,0,immediatement french daide immediatement
+ich habe mich verirrt bitte hilfe german,0,hilfe german bitte hilfe
+wo shiqule wo de qianbao qing bangzhu mandarin,0,bangzhu mandarin qing bangzhu
+udau onne kela wuna mata udauyangenawa sinhala,0,udauyangenawa sinhala mata udauyangenawa
+hlp me cant find my way bck,0,way bck hlp way
+pls hlp stranded no id no money,1,stranded id hlp stranded
+need hlp asap bitten by animal,0,bitten animal need hlp
+cant brth need dr fast pls,0,dr fast need dr
+som1 is stalking me hlp now,0,som1 stalking som1
+help sos need assistance now,2,help sos need assistance
+pls hurry its an emergency,2,hurry emergency pls hurry
+sos urgent need help asap,2,sos urgent urgent need
+someone pls hear me and help,2,pls hear hear help
+emergency pls send support now,2,emergency pls send support
+i need help finding my way back ive completely lost my location,2,lost location location
+theres a group of strangers acting suspiciously around me i feel unsafe,1,acting suspiciously group strangers
+im in a crowded market and someone just stole my bag,0,stole bag stole
+a fire broke out near me and i dont know where to go,2,broke near broke
+i lost my phone and wallet and dont know how to contact anyone,1,lost phone phone wallet
+my bike chain broke and im stuck in the middle of nowhere,1,chain broke bike chain
+a wild animal appeared on the trail and im too scared to move,0,animal appeared wild animal
+someone is aggressively shouting at me i need help fast,2,aggressively shouting shouting
+im stranded at the train station and its getting late,1,stranded train im stranded
+a man just approached me with threats i need help,2,approached threats threats need
+theres a landslide blocking the road im stuck here,1,theres landslide landslide blocking
+i think im having an allergic reaction my face is swelling and i need help,2,face swelling allergic reaction
+ive been pickpocketed and now i dont have any cash left,0,ive pickpocketed pickpocketed dont
+i cant find my tour group and im lost in this huge museum,1,tour group tour
+theres a strong smell of gas in this building i think its dangerous,2,smell gas gas building
+i slipped on the stairs and cant put weight on my leg,0,slipped stairs weight leg
+i was crossing the street and my backpack got stuck in a tuktuk i need help,2,stuck tuktuk backpack got
+someone tried to snatch my phone but ran away im really shaken up,0,snatch phone phone ran
+im experiencing severe chest pain and cant breathe properly,0,chest pain severe chest
+a stranger wont stop following me im scared for my safety,0,stop following scared safety
+theres been an accident nearby and im trapped in the middle of it,2,accident nearby theres accident
+my travel partner wandered off and i cant find them anywhere,0,partner wandered travel partner
+the road is completely blocked by water and i cant find a safe way around,0,blocked water water safe
+i think i broke my arm i need immediate medical assistance,0,broke arm arm need
+the driver isnt stopping the car even though i asked them to pull over,0,stopping car car asked
+i feel faint and might pass out i need someone to come quickly,0,feel faint faint
+the campsite is flooded and i cant get back to the main road,0,campsite flooded flooded main
+im stuck in this elevator and i cant get a signal to call for help,2,elevator signal stuck elevator
+a strange man just tried to grab me i ran away but im still scared,0,ran away im scared
+i was hiking alone and ive twisted my ankle i cant walk anymore,0,twisted ankle ankle walk
+i feel like im being followed by someone can someone come here,1,im followed followed come
+my child wandered off into the woods and i cant find them,0,wandered woods child wandered
+ive been in a car accident and i cant open the door to get out,2,accident open open door
+a street vendor started threatening me after i refused to buy something,1,refused buy threatening refused
+the ferry i was on started sinking and i swam to shore but im alone,0,swam shore sinking swam
+the electricity went out in this abandoned building and i cant see anything,0,abandoned building electricity went
+a storm destroyed my tent i dont know where to go now,0,destroyed tent tent
+i dropped my phone in the river and i have no way to call for help,2,phone river dropped phone
+the hotel i booked is closed and i dont know where else to go,0,hotel hotel booked
+a stranger is refusing to leave me alone at this bus station,0,stranger refusing leave bus
+my wallet was stolen and i have no money for transportation,1,wallet stolen stolen money
+i tripped and hit my head i feel dizzy and cant stand properly,0,feel dizzy dizzy
+a snake bit me while i was walking on this trail i need medical help fast,2,snake bit snake
+i lost my glasses and cant see well enough to get back safely,1,lost glasses glasses safely
+theres a fight breaking out near me and i feel unsafe,0,fight breaking theres fight
+the bridge i was walking on collapsed and i dont know where to go,0,walking collapsed bridge walking
+the boat engine stopped working and im stranded in the middle of the lake,1,boat engine engine stopped
+a stranger just snatched my camera and disappeared into the crowd,0,snatched camera camera disappeared
+im locked out of my airbnb and dont have any way to contact the owner,1,locked airbnb airbnb dont
+i think someone slipped something into my drink im feeling disoriented,0,slipped drink feeling disoriented
+i dont know where i am need help finding my location,2,finding location location
+im stuck in an unknown area cant find my way back,1,unknown area area way
+lost in the city and my phone is dying pls help,2,phone dying city phone
+i wandered off and now i cant find my group,0,wandered group group
+im stuck on a hiking trail dont know which way to go,1,stuck hiking hiking trail
+im dizzy and feel like fainting need help asap,2,im dizzy dizzy feel
+cant stop bleeding had an accident need urgent care,2,bleeding accident stop bleeding
+sharp pain in my chest dont know whats happening help,2,pain chest sharp pain
+injured badly cant move my leg need assistance now,0,leg need badly leg
+someone fainted near me need medical help fast,2,fainted near fainted
+my phone and money were stolen i have no way to contact anyone,1,money stolen stolen
+someone is following me im scared pls send police,2,send police following im
+my belongings were taken need help reporting the theft,2,reporting theft theft
+being harassed in a public place pls send assistance,0,harassed public harassed
+i was mugged and now im stranded without my wallet,1,stranded wallet mugged im
+im in the middle of a flood need urgent evacuation,0,urgent evacuation evacuation
+trapped under debris after earthquake need help finding a way out,2,debris earthquake trapped debris
+wildfires approaching the area dont know where to go,2,wildfires approaching wildfires
+stuck in a storm and cant see anything need immediate shelter,1,stuck storm immediate shelter
+there was a landslide and now the road is blocked pls help,2,landslide road road blocked
+my travel buddy disappeared cant reach them on their phone,0,buddy disappeared disappeared reach
+my child is missing cant find them near the shopping area,0,child missing near shopping
+looking for my lost friend in the park need assistance,1,park need friend park
+cant find my partner in this crowded street pls help,2,street pls partner crowded
+my sibling is missing from the group and they have no phone,0,sibling missing group phone
+my taxi left me stranded dont know where to go,1,taxi left taxi
+car ran out of fuel in the middle of nowhere pls help,2,ran fuel fuel middle
+tuk tuk broke down in an unknown area need assistance,0,tuk broke tuk tuk
+motorbike broke in heavy rain no help around pls send someone,2,motorbike broke rain help
+stranded after missing the last train need urgent transport,1,missing train urgent transport
+cant understand directions people are giving me pls help,2,understand directions directions
+dont know the local language cant ask anyone for assistance,0,ask assistance know local
+im in a foreign country and cant explain my situation need help,2,foreign country im foreign
+lost and unable to communicate with anyone around me,1,lost unable unable communicate
+trying to call for help but language barrier is making it difficult,2,language barrier help language
+hlp me lost in the woods cant find my way out,1,lost woods woods way
+fell nd hurt my ankle need hlp cant move,0,hurt ankle ankle need
+stolen passport stranded need hlp asap,1,stolen passport passport stranded
+pls hurry im being stalked nd cant escape,0,im stalked stalked nd
+sm1 is chasing me feel unsafe need hlp,0,sm1 chasing sm1
+need emergency assistance right now pls hurry,2,need emergency emergency assistance
+pls come fast its a life threatening situation,1,pls come life threatening
+emergency cant handle the situation alone need help,2,emergency emergency handle
+urgent help needed i cant manage this on my own,2,needed manage urgent help
+im scared and dont know what to do someone pls assist,0,im scared scared dont
+the taxi driver is taking a different route and i dont feel safe,0,taxi driver taxi
+im stuck in a subway station and theres no staff around to help me,2,subway station stuck subway
+someone is aggressively knocking on my hotel door im scared,0,aggressively knocking knocking hotel
+the ferry left without me and now im stranded on the island,1,stranded island ferry left
+i can see a huge fire in the distance but i dont know if its safe to stay here,2,safe stay know safe
+theres been a landslide and im trapped on this hiking trail,0,trapped hiking hiking trail
+i feel disoriented after a bad fall i dont know where i am,0,feel disoriented disoriented bad
+ive lost my medication and i need a pharmacy urgently,1,need pharmacy pharmacy urgently
+a stranger is blocking my way and wont let me pass i feel unsafe,0,stranger blocking blocking way
+i missed the last train and im stuck at the station overnight,1,station overnight missed train
+ive been stung by a bee and i think im having an allergic reaction,0,stung bee allergic reaction
+theres heavy snow and my car is stuck i cant drive any further,1,snow car heavy snow
+a stranger tried to grab my arm in the park i need someone to help me,2,grab arm stranger tried
+ive been locked inside a shop and theres no way to get out,0,locked inside ive locked
+the lift stopped midway and im trapped inside with no signal,0,lift stopped stopped midway
+a gang of people is blocking the road ahead im scared to go any further,0,blocking road gang people
+my child fell into a ditch and i cant get them out,0,child fell fell ditch
+the boat im on is taking on water i need rescue immediately,0,need rescue rescue immediately
+i was pushed down in a crowd and ive lost my phone,1,lost phone phone
+i think im being scammed at this money exchange counter,1,im scammed scammed money
+the power went out in this building and im stuck on the top floor,1,stuck floor power went
+a protest has broken out near me and its getting violent,0,protest broken protest
+ive been bitten by a spider and im not sure if its dangerous,2,bitten spider spider
+the train doors closed on me and my luggage is inside,0,closed luggage train doors
+the water level is rising rapidly in the river i need to get out of here,0,rapidly river river need
+my flight got canceled and i have nowhere to stay tonight,0,canceled stay flight got
+ive been stuck in this parking lot for hours because my car wont start,1,stuck parking wont start
+theres a tornado warning and i dont know where the nearest shelter is,0,tornado warning theres tornado
+the mountain path ahead is blocked and i cant find an alternate route,0,mountain path alternate route
+a stranger keeps asking me personal questions i feel uncomfortable,0,personal questions asking personal
+a dog is chasing me on the street and im terrified,0,dog chasing im terrified
+my friend wandered off during the festival and i cant find them,0,wandered festival festival
+i think my drink was spiked im feeling drowsy and cant focus,0,drink spiked drowsy focus
+theres a flood warning and i dont know if its safe to stay here,0,flood warning theres flood
+the rental car broke down and i dont know who to contact,0,car broke rental car
+im stranded on this highway without food or water,1,stranded highway im stranded
+someone banged on my car window and ran away im scared to drive further,0,car window banged car
+the tour guide left without me and now im lost in this cave,1,lost cave tour guide
+im hearing loud gunshots nearby and i dont know where to hide,2,gunshots nearby loud gunshots
+theres a wildfire nearby and i can see the smoke getting closer,2,wildfire nearby theres wildfire
+im stuck on this cliffside and i cant climb up or down safely,1,cliffside climb stuck cliffside
+the tuk tuk driver took my bag and drove off i dont know what to do,0,tuk driver bag drove
+a group of monkeys is surrounding me and trying to snatch my bag,0,monkeys surrounding group monkeys
+i was hiking and my phone battery just died i dont know the way back,0,phone battery hiking phone
+i was robbed at gunpoint and need urgent police assistance,2,robbed gunpoint police assistance
+the rain is so heavy that i cant see the road ahead,0,rain heavy rain
+i slipped on the icy sidewalk and my knee is swelling up fast,0,knee swelling swelling fast
+the taxi driver is refusing to stop the car im really scared,0,stop car taxi driver
+im stuck in this parking garage because i cant find the exit,1,garage exit parking garage
+a stranger just tried to take my childs hand i need immediate help,2,childs hand tried childs
+the taxi driver is taking a different route and i dont feel safe,0,taxi driver taxi
+im stuck in a subway station and theres no staff around to help me,2,subway station stuck subway
+someone is aggressively knocking on my hotel door im scared,0,aggressively knocking knocking hotel
+the ferry left without me and now im stranded on the island,1,stranded island ferry left
+i can see a huge fire in the distance but i dont know if its safe to stay here,2,safe stay know safe
+theres been a landslide and im trapped on this hiking trail,0,trapped hiking hiking trail
+i feel disoriented after a bad fall i dont know where i am,0,feel disoriented disoriented bad
+ive lost my medication and i need a pharmacy urgently,1,need pharmacy pharmacy urgently
+a stranger is blocking my way and wont let me pass i feel unsafe,0,stranger blocking blocking way
+i missed the last train and im stuck at the station overnight,1,station overnight missed train
+ive been stung by a bee and i think im having an allergic reaction,0,stung bee allergic reaction
+theres heavy snow and my car is stuck i cant drive any further,1,snow car heavy snow
+a stranger tried to grab my arm in the park i need someone to help me,2,grab arm stranger tried
+ive been locked inside a shop and theres no way to get out,0,locked inside ive locked
+the lift stopped midway and im trapped inside with no signal,0,lift stopped stopped midway
+a gang of people is blocking the road ahead im scared to go any further,0,blocking road gang people
+my child fell into a ditch and i cant get them out,0,child fell fell ditch
+the boat im on is taking on water i need rescue immediately,0,need rescue rescue immediately
+i was pushed down in a crowd and ive lost my phone,1,lost phone phone
+i think im being scammed at this money exchange counter,1,im scammed scammed money
+the power went out in this building and im stuck on the top floor,1,stuck floor power went
+a protest has broken out near me and its getting violent,0,protest broken protest
+ive been bitten by a spider and im not sure if its dangerous,2,bitten spider spider
+the train doors closed on me and my luggage is inside,0,closed luggage train doors
+the water level is rising rapidly in the river i need to get out of here,0,rapidly river river need
+my flight got canceled and i have nowhere to stay tonight,0,canceled stay flight got
+ive been stuck in this parking lot for hours because my car wont start,1,stuck parking wont start
+theres a tornado warning and i dont know where the nearest shelter is,0,tornado warning theres tornado
+the mountain path ahead is blocked and i cant find an alternate route,0,mountain path alternate route
+a stranger keeps asking me personal questions i feel uncomfortable,0,personal questions asking personal
+a dog is chasing me on the street and im terrified,0,dog chasing im terrified
+my friend wandered off during the festival and i cant find them,0,wandered festival festival
+i think my drink was spiked im feeling drowsy and cant focus,0,drink spiked drowsy focus
+theres a flood warning and i dont know if its safe to stay here,0,flood warning theres flood
+the rental car broke down and i dont know who to contact,0,car broke rental car
+im stranded on this highway without food or water,1,stranded highway im stranded
+someone banged on my car window and ran away im scared to drive further,0,car window banged car
+the tour guide left without me and now im lost in this cave,1,lost cave tour guide
+im hearing loud gunshots nearby and i dont know where to hide,2,gunshots nearby loud gunshots
+theres a wildfire nearby and i can see the smoke getting closer,2,wildfire nearby theres wildfire
+im stuck on this cliffside and i cant climb up or down safely,1,cliffside climb stuck cliffside
+the tuktuk driver took my bag and drove off i dont know what to do,0,bag drove tuktuk driver
+a group of monkeys is surrounding me and trying to snatch my bag,0,monkeys surrounding group monkeys
+i was hiking and my phone battery just died i dont know the way back,0,phone battery hiking phone
+i was robbed at gunpoint and need urgent police assistance,2,robbed gunpoint police assistance
+the rain is so heavy that i cant see the road ahead,0,rain heavy rain
+i slipped on the icy sidewalk and my knee is swelling up fast,0,knee swelling swelling fast
+the taxi driver is refusing to stop the car im really scared,0,stop car taxi driver
+im stuck in this parking garage because i cant find the exit,1,garage exit parking garage
+a stranger just tried to take my childs hand i need immediate help,2,childs hand tried childs
+a stranger is chasing me through the streets help,2,stranger chasing chasing streets
+my phone is dying and im lost in the city need help fast,2,phone dying city need
+cant find my child in this crowded festival please assist,0,crowded festival child crowded
+theres been an accident and someones bleeding heavily,2,someones bleeding bleeding heavily
+my wallet and passport were stolen at the train station,1,passport stolen stolen train
+cant breathe properly and im feeling faint need assistance,0,feeling faint faint
+a fight broke out near me im too scared to move,0,fight broke im scared
+someone is threatening me with a knife police now,2,threatening knife knife police
+stranded on a bridge and the current is getting stronger,1,stranded bridge bridge current
+my bike tire burst and im stuck in the middle of nowhere,1,tire burst bike tire
+heard gunshots in my area where do i go,2,gunshots area heard gunshots
+in an elevator that stopped suddenly claustrophobic help me,2,claustrophobic help suddenly claustrophobic
+fell down the stairs i cant stand on my leg,0,fell stairs stand leg
+someones following me since i left the store feel unsafe,0,feel unsafe store feel
+landslide ahead blocking the way were all trapped here,0,landslide ahead landslide
+faint smell of gas in the hostel should we evacuate,0,gas hostel hostel evacuate
+falling rocks damaged our car during the drive stuck here,1,rocks damaged falling rocks
+aggressive dog cornering me in an alley cant move,0,dog cornering aggressive dog
+flash flood is sweeping cars off the road need help urgently,2,flash flood flood sweeping
+lost in this forest trail no signs or people around,1,forest trail trail signs
+friend fainted but i dont know cpr what do i do,0,friend fainted know cpr
+boat engine failed and were drifting further into the sea,0,boat engine drifting sea
+dark alley feels unsafe a group is blocking the way ahead,0,dark alley unsafe group
+stranded at this gas station overnight no staff here,1,gas station stranded gas
+caught in this thunderstorm while kayaking water rising fast,0,thunderstorm kayaking caught thunderstorm
+taxi driver locked the doors and is not stopping help,2,taxi driver driver locked
+my toddler wandered off at the mall where do i go,0,wandered mall toddler wandered
+collapsed bridge ahead our group is stuck on the other side,1,collapsed bridge group stuck
+stuck in a building thats shakingearthquake maybe cant leave,1,thats shakingearthquake shakingearthquake
+lost in an underground parking lot its empty and scary here,1,underground parking lost underground
+a riot started suddenly shops are being vandalized,0,shops vandalized riot started
+stepped on something sharp bleeding heavily now need help,2,sharp bleeding bleeding
+dont recognize this area i think i took the wrong train,0,wrong train train
+my hotel is locked up and im stranded outside late at night,1,hotel locked hotel
+child fell into the lake and cant swim need help urgently,2,lake swim child fell
+a thief on a bike snatched my bag and sped away what now,0,bike snatched thief bike
+someone unconscious on the road after a hitandrun what do i do,2,unconscious road unconscious
+saw a vehicle crash into a pole people seem trapped inside,0,crash pole people trapped
+loud shouting and breaking glass in the hallway scared to open my door,0,hallway scared glass hallway
+fire alarm blaring in this building but i dont see any fire exits,2,alarm blaring alarm
+car broke down in the desert and its getting dark,0,broke desert car broke
+caught in a blizzard and my group is losing visibility,0,blizzard group losing visibility
+witnessed a robbery at the atm not sure what to do now,2,robbery atm witnessed robbery
+tour guide lost the way and were stuck in this forest,1,guide lost stuck forest
+hotel staff refuses to help me get out of this situation,2,hotel staff staff refuses
+fell off my bike on this steep trail its hard to get back up,0,fell bike bike steep
+electrical fire started in the kitchen cant stop the flames,2,stop flames flames
+the lift started moving down while the doors were open,0,lift started lift
+the riverbank is eroding and im stuck on the other side,1,riverbank eroding riverbank
+a group of men surrounded our car please send help fast,2,group men men surrounded
+lost the trail markers during this hike completely disoriented,1,markers hike trail markers
+witnessed a drowning at the beach no lifeguards are nearby,0,witnessed drowning beach lifeguards
+bridge collapsed ahead of us entire area is cut off now,0,bridge collapsed collapsed ahead
+driver is behaving weirdly and ignoring my stop request,0,driver behaving ignoring stop
+my raft got stuck on the rocks and the current is strong,1,raft got rocks current
+snowstorm started and i cant find the way back to the lodge,0,snowstorm started snowstorm
+saw smoke rising in the building across is it safe here,0,saw smoke building safe
+stranded at the airport due to canceled flights no support staff,1,stranded airport airport canceled
+wild boar on the trail ahead no idea how to get past it,0,boar trail wild boar
+hotel fire exit blocked and theres smoke in the hallway,2,smoke hallway hotel exit
+someone is chasing me pls hlp,0,chasing pls chasing
+sm1s following me need hlp fast,0,sm1s following sm1s
+ayuda someone behind me hurry,0,ayuda hurry ayuda
+pls help im being chased rn,2,im chased chased rn
+socorro somebodys chasing me,0,socorro somebodys socorro
+im trapped in the building fire everywhere,2,trapped building im trapped
+stuck inside theres fire send hlp now,2,stuck inside send hlp
+incendio cant get out trapped,0,incendio trapped incendio
+i cant escape flames everywhere,0,escape flames escape
+lost my kid in the market help me find them,2,kid market lost kid
+my childs missing pls help,2,childs missing childs
+niño perdido en el mercado ayuda,0,niño perdido mercado ayuda
+kids gone cant see them anywhere,0,kids gone kids
+theres a man with a knife danger,2,man knife knife danger
+armed man nearby save us,0,armed man man nearby
+knife attack were in danger,2,knife attack attack danger
+cuidado hombre con cuchillo,0,hombre cuchillo cuidado hombre
+sm1 w knife pls hurry,0,sm1 knife knife pls
+flood waters rising fast were stuck,1,flood waters flood
+flooded road cant move hlp,0,flooded road road hlp
+el agua está subiendo ayuda,0,agua está el agua
+stranded in water urgent hlp,1,stranded water water urgent
+i fell i think i broke my leg,0,broke leg fell
+broken leg cant move send hlp,0,broken leg leg send
+caí mi pierna duele mucho,0,duele mucho mi pierna
+im hurt leg broken pls assist,0,leg broken hurt leg
+my wallets stolen im stranded,1,wallets stolen stolen im
+sm1 took my wallet im stuck,1,took wallet sm1 took
+no tengo mi cartera estoy perdido,0,estoy perdido perdido
+lost my money need urgent hlp,1,lost money urgent hlp
+were lost in the jungle cant find the trail,1,jungle trail lost jungle
+lost hiking need direction,1,lost hiking hiking need
+perdidos en el bosque ayuda,0,bosque ayuda perdidos en
+disoriented no trail visible pls hlp,0,trail visible disoriented trail
+driver refusing to stop im scared,0,driver refusing refusing stop
+taxi driver wont stop unsafe,0,taxi driver taxi
+chofer no para me da miedo,0,da miedo miedo
+cab driver acting weird pls assist,0,cab driver driver acting
+cant swim stuck in the river,1,swim stuck stuck river
+stranded in water drowning,1,water drowning drowning
+socorro estoy en el agua no sé nadar,0,socorro estoy socorro
+pls hurry im sinking,0,im sinking sinking
+theres smoke in the building no way out,0,smoke building theres smoke
+smoke filling rooms cant escape,0,smoke filling rooms escape
+fuego y humo no hay salida,0,fuego humo hay salida
+pls help trapped w smoke everywhere,2,trapped smoke smoke
+saw a car crash people trapped inside,0,car crash crash people
+accident ppl need help asap,2,accident ppl accident
+choque de autos hay heridos,0,choque autos choque
+big crash urgent medical hlp needed,0,medical hlp crash urgent
+someone fainted we need a medic,0,fainted need need medic
+person unconscious cpr needed,2,unconscious cpr cpr needed
+alguien se desmayó rápido,0,desmayó rápido alguien se
+sm1 passed out not waking up,0,sm1 passed passed waking
+im locked in this room cant open the door,0,locked room im locked
+doors jammed stuck inside,1,doors jammed jammed stuck
+cerradura rota no puedo salir,0,cerradura rota rota puedo
+trapped inside need hlp urgently,0,hlp urgently need hlp
+snowstorm is blocking the road were stuck,1,snowstorm blocking road stuck
+stuck in blizzard need hlp,1,stuck blizzard blizzard need
+tormenta de nieve estamos atrapados,0,estamos atrapados tormenta nieve
+snowed in cant drive send hlp,0,snowed drive drive send
+gunshots nearby hiding now,2,gunshots nearby gunshots
+shots fired too scared to move,2,fired scared shots fired
+tiros cerca estoy escondido,0,estoy escondido escondido
+sm1 shooting we need police now,2,sm1 shooting sm1
+child stuck in the water help now,2,child stuck stuck water
+my kids drowning hurry up,0,drowning hurry kids drowning
+niño en el agua urgente ayuda,0,agua urgente urgente ayuda
+cant reach my kid pls send hlp,0,reach kid send hlp
+aggressive animal blocking the way,0,animal blocking aggressive animal
+wild dog cant move forward,0,dog forward wild dog
+animal salvaje bloqueando el camino,0,animal salvaje salvaje bloqueando
+dog attack need assistance,2,dog attack dog
+earthquake building shaking hard,0,building shaking earthquake building
+terremoto el edificio se está moviendo,0,el edificio edificio se
+everythings shaking too scared to leave,0,everythings shaking shaking scared
+big earthquake stuck indoors,1,earthquake stuck big earthquake
+group threatening us were scared,1,group threatening threatening scared
+sm1 threatening my group urgent hlp,1,sm1 threatening threatening group
+nos amenazan estamos asustados,0,amenazan estamos estamos asustados
+gang nearby need police now,2,gang nearby need police
+faint smell of gas feels unsafe here,0,smell gas faint smell
+gas leak suspected help us,2,gas leak leak suspected
+huele a gas puede ser peligroso,0,ser peligroso gas puede
+smelling gas not sure what to do,0,smelling gas smelling
+boat sinking water coming in fast,0,boat sinking sinking water
+sinking boat drowning,0,boat drowning sinking boat
+barco hundiéndose rápido ayuda,0,rápido ayuda hundiéndose rápido
+emergency our boats going down,2,emergency boats boats going
+car stuck on a flooded bridge,1,flooded bridge car stuck
+water rising car stranded,1,water rising car stranded
+puente inundado estamos atrapados,0,inundado estamos puente inundado
+stuck on bridge pls send hlp fast,1,stuck bridge bridge pls
+my phones almost dead im lost,1,phones dead phones
+battery dying im stuck pls help,2,battery dying battery
+teléfono sin batería perdido,0,batería perdido teléfono sin
+lost no phone batt need hlp fast,1,phone batt lost phone
+tourist scammed me im stranded now,1,tourist scammed scammed im
+scammed by locals need police hlp,2,scammed locals police hlp
+me estafaron estoy sin dinero,0,sin dinero estafaron estoy
+urgent help tourist guide scammed me,2,guide scammed tourist guide
+i lost my wallet and my id is missing,1,lost wallet wallet id
+my phone was stolen and i need help contacting someone,2,phone stolen stolen need
+i am stranded on a deserted road with no help in sight,2,stranded deserted deserted road
+i need urgent medical assistance i think i broke my leg,0,broke leg medical assistance
+my friend fainted and is not responding we need a doctor,0,friend fainted fainted responding
+there is a fire in the building and i cannot find a way out,2,building building way
+i feel unsafe someone has been following me for a while,0,unsafe following feel unsafe
+i got separated from my group and i am completely lost,1,separated group got separated
+my bag with all my belongings was snatched i need help,2,belongings snatched bag belongings
+i am in severe pain and cannot walk please send help,2,pain walk walk
+my child is missing and i cannot find them anywhere,0,child missing missing
+i am trapped in an elevator and cannot get out,0,trapped elevator elevator
+there is flooding here and i am stuck on the roof,1,stuck roof flooding stuck
+i was attacked by someone and i need the police urgently,2,need police police urgently
+there is a wild animal nearby and i feel like it might attack,2,animal nearby wild animal
+i slipped and injured my back and cannot move,0,slipped injured slipped
+the weather is terrible and i am stranded without shelter,1,stranded shelter shelter
+my rental car broke down and i am stuck on the highway,1,stuck highway car broke
+i need a doctor someone around me is not breathing,0,doctor breathing need doctor
+i saw someone collapse on the road and they need immediate help,2,collapse road saw collapse
+i have been robbed and need to report it to the authorities,0,report authorities robbed
+i am stuck in a storm and i am unable to find safety,1,storm unable stuck storm
+my passport and documents are missing i need help urgently,2,documents missing passport documents
+i think i was bitten by a poisonous animal and need medical help,2,bitten poisonous poisonous animal
+i have been stranded at the train station with no place to go,1,stranded train train station
+i feel dizzy and lightheaded and i think i might faint,0,feel dizzy dizzy lightheaded
+my bike broke down and i am stuck in an isolated area,1,stuck isolated bike broke
+i need help someone is threatening me and i feel unsafe,2,help threatening threatening
+i cannot find the nearest hospital and need help urgently,2,nearest hospital hospital need
+i am lost in the forest and it is getting dark please send help,2,lost forest getting dark
+the lift stopped midway,0,lift stopped stopped midway
