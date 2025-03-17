@@ -1,8 +1,8 @@
 from flask import Blueprint, render_template, request, send_file, jsonify
-from modules.keyword_extraction import process_travel_description
-from modules.recommender import create_integrated_recommender
-from modules.itinerary_generator import ItineraryGenerator
-from modules.utils import format_extracted_info
+from Itenary.modules.keyword_extraction import process_travel_description
+from Itenary.modules.recommender import create_integrated_recommender
+from Itenary.modules.itinerary_generator import ItineraryGenerator
+from Itenary.modules.utils import format_extracted_info
 from datetime import datetime
 import pandas as pd
 import os
@@ -13,7 +13,7 @@ from dotenv import load_dotenv
 from docx.shared import Pt
 from docx.oxml.ns import qn
 from docx.oxml import OxmlElement
-from modules.constants import VALID_LOCATIONS
+from Itenary.modules.constants import VALID_LOCATIONS
 
 load_dotenv()
 

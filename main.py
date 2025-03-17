@@ -16,6 +16,7 @@ app.register_blueprint(EC_blueprint, url_prefix='/recommendation')
 app.register_blueprint(itinerary_blueprint, url_prefix='/itinerary') 
 app.register_blueprint(sos_blueprint, url_prefix='/emergency-helper')
 
+
 # MongoDB Connection
 client = MongoClient('mongodb+srv://admin:admindsgp66@dsgp.e5yrm.mongodb.net/?ssl=true&tlsAllowInvalidCertificates=true')
 db = client['travelmateai']
