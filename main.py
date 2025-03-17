@@ -43,7 +43,8 @@ def feature2():
 
 @app.route('/itinerary.home')
 def feature3():
-    return render_template('Itenary/templates/itinerary.html')
+    return render_template('base.html')
+
 
 @app.route('/emergency-helper.home') 
 def feature4():
