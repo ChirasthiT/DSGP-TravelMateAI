@@ -40,7 +40,7 @@ def feature2():
 
 @app.route('/itinerary.home')
 def feature3():
-    return render_template('itinerary.html')
+    return render_template('base.html')
 
 # @app.route('/feature4')
 # def feature4():
