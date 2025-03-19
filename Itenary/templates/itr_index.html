@@ -1,0 +1,176 @@
+{% extends "base.html" %} {% block content %}
+<!-- Include the loading overlay at the top of the content -->
+{% include 'loading_overlay.html' %}
+<div class="container">
+  <div class="main-title text-center mb-4">
+    <h1 class="display-4 text-white">Sri Lanka Travel Planner</h1>
+    <p class="lead text-white">Create your perfect Sri Lankan itinerary</p>
+  </div>
+
+  <div class="card main-card">
+    <div class="card-header bg-gradient text-white">
+      <h3 class="mb-0">Plan Your Journey</h3>
+    </div>
+    <div class="card-body">
+      <form method="POST" id="plannerForm" onsubmit="handleFormSubmit(event)">
+        <!-- Travel Dates Section -->
+        <div class="section-container mb-4">
+          <h4 class="section-title">Travel Dates</h4>
+          <div class="row g-4">
+            <div class="col-md-6">
+              <div class="form-floating">
+                <input
+                  type="date"
+                  class="form-control custom-input"
+                  id="arrival_date"
+                  name="arrival_date"
+                  required
+                />
+                <label for="arrival_date">Arrival Date</label>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-floating">
+                <select
+                  class="form-select custom-input"
+                  id="arrival_time"
+                  name="arrival_time"
+                  required
+                >
+                  <option value="Morning">Morning</option>
+                  <option value="Noon">Noon</option>
+                  <option value="Evening">Evening</option>
+                  <option value="Night">Night</option>
+                </select>
+                <label for="arrival_time">Arrival Time</label>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-floating">
+                <input
+                  type="date"
+                  class="form-control custom-input"
+                  id="departure_date"
+                  name="departure_date"
+                  required
+                />
+                <label for="departure_date">Departure Date</label>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-floating">
+                <select
+                  class="form-select custom-input"
+                  id="departure_time"
+                  name="departure_time"
+                  required
+                >
+                  <option value="Morning">Morning</option>
+                  <option value="Noon">Noon</option>
+                  <option value="Evening">Evening</option>
+                  <option value="Night">Night</option>
+                </select>
+                <label for="departure_time">Departure Time</label>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Trip Description Section -->
+        <div class="section-container">
+          <h4 class="section-title">Trip Description</h4>
+          <div class="description-guide">
+            <p class="guide-text mb-2">
+              Please describe your trip in a single paragraph including the
+              following details:
+            </p>
+
+            <div class="guide-points">
+              <div class="d-flex align-items-start flex-column mb-3">
+                <div class="d-flex align-items-center w-100">
+                  <p class="mb-1"><strong>Where do you want to go?</strong></p>
+                  <button
+                    type="button"
+                    class="btn btn-link locations-btn ms-2"
+                    onclick="toggleLocations()"
+                  >
+                    <i class="fas fa-map-marker-alt me-1"></i>View Available
+                    Locations
+                  </button>
+                </div>
+                <div
+                  id="locationsList"
+                  class="mt-2 w-100"
+                  style="display: none"
+                >
+                  <div class="card">
+                    <div class="card-body p-3">
+                      <div class="row row-cols-1 row-cols-md-3 g-3">
+                        {% for location in locations %}
+                        <div class="col">
+                          <div class="location-chip">
+                            <i class="fas fa-map-pin me-2"></i>{{ location }}
+                          </div>
+                        </div>
+                        {% endfor %}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <p class="mb-1">
+                <strong>With whom are you traveling</strong> (family, friends,
+                partner, solo)?
+              </p>
+              <p class="mb-1"><strong>What are your interests?</strong></p>
+              <p class="mb-1">
+                <strong>What is your budget level</strong> (low, medium, high)?
+              </p>
+            </div>
+          </div>
+          <div class="form-floating mt-3">
+            <textarea
+              class="form-control custom-textarea"
+              id="description"
+              name="description"
+              style="height: 150px"
+              required
+            ></textarea>
+            <label for="description"
+              >Example: I'm planning to visit Kandy and Sigiriya with my family
+              for a cultural experience. Our budget is medium range.</label
+            >
+          </div>
+        </div>
+
+        <div class="text-center mt-4">
+          <button type="submit" class="btn btn-primary btn-lg custom-button">
+            <span>Next</span>
+            <i class="fas fa-arrow-right ms-2"></i>
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<script>
+  function toggleLocations() {
+    const locationsList = document.getElementById("locationsList");
+    if (locationsList.style.display === "none") {
+      locationsList.style.display = "block";
+    } else {
+      locationsList.style.display = "none";
+    }
+  }
+
+  function handleFormSubmit(event) {
+    event.preventDefault();
+    showLoading(
+      "Analyzing your travel preferences...",
+      "We're creating personalized recommendations based on your input."
+    );
+    event.target.submit();
+  }
+</script>
+{% endblock %}
