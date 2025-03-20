@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Emergency SOS</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        body {
+            background-color: #f8f9fa;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 500px;
+            padding: 20px;
+        }
+
+        .screen {
+            background-color: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            display: none;
+        }
+
+        .screen.active {
+            display: block;
+        }
+
+        h1 {
+            color: #343a40;
+            margin-bottom: 20px;
+        }
+
+        p {
+            color: #6c757d;
+            margin-bottom: 25px;
+            line-height: 1.5;
+        }
+
+        .sos-button {
+            background-color: #dc3545;
+            color: white;
+            font-size: 24px;
+            border: none;
+            border-radius: 50%;
+            width: 150px;
+            height: 150px;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(220, 53, 69, 0.5);
+            transition: transform 0.3s, box-shadow 0.3s;
+            margin: 20px auto;
+            display: block;
+            font-weight: bold;
+        }
+
+        .sos-button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 15px rgba(220, 53, 69, 0.6);
+        }
+
+        .sos-button:active {
+            transform: scale(0.95);
+        }
+
+        .input-option {
+            background-color: #007bff;
+            color: white;
+            font-size: 18px;
+            border: none;
+            border-radius: 10px;
+            padding: 15px 25px;
+            margin: 10px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            width: 180px;
+        }
+
+        .input-option:hover {
+            background-color: #0069d9;
+        }
+
+        .input-area {
+            margin: 20px 0;
+        }
+
+        textarea {
+            width: 100%;
+            padding: 15px;
+            border: 1px solid #ced4da;
+            border-radius: 10px;
+            font-size: 16px;
+            min-height: 150px;
+            resize: none;
+        }
+
+        .submit-btn {
+            background-color: #28a745;
+            color: white;
+            font-size: 18px;
+            border: none;
+            border-radius: 10px;
+            padding: 12px 30px;
+            margin-top: 15px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .submit-btn:hover {
+            background-color: #218838;
+        }
+
+        .record-btn {
+            background-color: #007bff;
+            color: white;
+            font-size: 18px;
+            border: none;
+            border-radius: 50%;
+            width: 80px;
+            height: 80px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            margin: 20px auto;
+            display: block;
+        }
+
+        .record-btn.recording {
+            background-color: #dc3545;
+            animation: pulse 1.5s infinite;
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.1);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        .mic-icon {
+            font-size: 32px;
+        }
+
+        .spinner {
+            border: 5px solid rgba(0, 0, 0, 0.1);
+            border-radius: 50%;
+            border-top: 5px solid #007bff;
+            width: 50px;
+            height: 50px;
+            animation: spin 1s linear infinite;
+            margin: 30px auto;
+            display: block;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .risk-meter {
+            width: 100%;
+            height: 30px;
+            background-color: #e9ecef;
+            border-radius: 15px;
+            margin: 30px 0;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .risk-level {
+            height: 100%;
+            transition: width 1s, background-color 1s;
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+
+        .risk-text {
+            font-size: 22px;
+            font-weight: bold;
+            margin: 20px 0;
+        }
+
+        .low-risk {
+            color: #28a745;
+        }
+
+        .medium-risk {
+            color: #ffc107;
+        }
+
+        .high-risk {
+            color: #dc3545;
+        }
+
+        .recommendations {
+            text-align: left;
+            background-color: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 20px;
+        }
+
+        .recommendations h3 {
+            margin-bottom: 15px;
+            color: #343a40;
+        }
+
+        .recommendations ul {
+            padding-left: 20px;
+        }
+
+        .recommendations li {
+            margin-bottom: 10px;
+            color: #495057;
+        }
+
+        .back-btn {
+            background-color: #6c757d;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 8px 16px;
+            margin-top: 20px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: background-color 0.3s;
+        }
+
+        .back-btn:hover {
+            background-color: #5a6268;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="screen active" id="sos-screen">
+            <h1>Emergency Assistance</h1>
+            <p>Press the SOS button below if you need immediate help</p>
+            <button class="sos-button" id="sos-btn">SOS</button>
+        </div>
+
+        <div class="screen" id="input-selection-screen">
+            <h1>How would you like to describe your emergency?</h1>
+            <button class="input-option" id="text-option">Text Input</button>
+            <button class="input-option" id="voice-option">Voice Input</button>
+            <button class="back-btn" onclick="goToScreen('sos-screen')">Back</button>
+        </div>
+
+        <div class="screen" id="text-input-screen">
+            <h1>Describe Your Emergency</h1>
+            <p>Please provide details about your emergency situation</p>
+            <div class="input-area">
+                <textarea id="emergency-text" placeholder="Describe what's happening..."></textarea>
+            </div>
+            <button class="submit-btn" id="submit-text">Submit</button>
+            <button class="back-btn" onclick="goToScreen('input-selection-screen')">Back</button>
+        </div>
+
+        <div class="screen" id="voice-input-screen">
+            <h1>Speak About Your Emergency</h1>
+            <p>Press the microphone button and speak clearly</p>
+            <button class="record-btn" id="record-btn">
+                <span class="mic-icon">🎤</span>
+            </button>
+            <p id="recording-status">Click to start recording</p>
+            <div id="voice-transcript" style="margin-top: 20px; display: none;">
+                <h3>Your message:</h3>
+                <p id="transcript-text" style="font-style: italic;"></p>
+            </div>
+            <button class="submit-btn" id="submit-voice" style="display: none;">Submit</button>
+            <button class="back-btn" onclick="goToScreen('input-selection-screen')">Back</button>
+        </div>
+
+        <div class="screen" id="analysis-screen">
+            <h1>Analyzing Your Emergency</h1>
+            <p>Please wait while we assess the situation...</p>
+            <div class="spinner"></div>
+        </div>
+
+        <div class="screen" id="results-screen">
+            <h1>Emergency Assessment</h1>
+            <div class="risk-text" id="risk-text">Risk Level: Analyzing...</div>
+            <div class="risk-meter">
+                <div class="risk-level" id="risk-level"></div>
+            </div>
+            <div class="recommendations" id="recommendations">
+                <h3>Recommendations:</h3>
+                <ul id="recommendation-list">
+                </ul>
+            </div>
+            <button class="sos-button" style="font-size: 18px; height: 100px; width: 100px; margin-top: 30px;" onclick="goToScreen('sos-screen')">New SOS</button>
+        </div>
+    </div>
+
+    <script>
+        let currentScreen = 'sos-screen';
+        let mediaRecorder;
+        let audioChunks = [];
+        let isRecording = false;
+        let transcript = '';
+
+        const sosBtn = document.getElementById('sos-btn');
+        const textOption = document.getElementById('text-option');
+        const voiceOption = document.getElementById('voice-option');
+        const submitTextBtn = document.getElementById('submit-text');
+        const recordBtn = document.getElementById('record-btn');
+        const submitVoiceBtn = document.getElementById('submit-voice');
+        const recordingStatus = document.getElementById('recording-status');
+        const transcriptText = document.getElementById('transcript-text');
+        const voiceTranscript = document.getElementById('voice-transcript');
+
+        const API_BASE_URL = '/emergency-helper';
+        const SOS_ENDPOINT = `${API_BASE_URL}/sos`;
+        const SEND_SOS_ENDPOINT = `${API_BASE_URL}/send_sos`;
+
+        sosBtn.addEventListener('click', () => {
+            goToScreen('input-selection-screen');
+        });
+
+        textOption.addEventListener('click', () => {
+            goToScreen('text-input-screen');
+        });
+
+        voiceOption.addEventListener('click', () => {
+            goToScreen('voice-input-screen');
+        });
+
+        submitTextBtn.addEventListener('click', () => {
+            const emergencyText = document.getElementById('emergency-text').value.trim();
+            if (emergencyText) {
+                analyzeEmergency(emergencyText);
+            } else {
+                alert('Please describe your emergency before submitting.');
+            }
+        });
+
+        recordBtn.addEventListener('click', toggleRecording);
+
+        submitVoiceBtn.addEventListener('click', () => {
+            if (transcript) {
+                analyzeEmergency(transcript);
+            } else {
+                alert('Please record your emergency message before submitting.');
+            }
+        });
+
+        function goToScreen(screenId) {
+            document.getElementById(currentScreen).classList.remove('active');
+            document.getElementById(screenId).classList.add('active');
+            currentScreen = screenId;
+
+            if (screenId === 'sos-screen') {
+                resetAll();
+            }
+        }
+
+        function resetAll() {
+            if (document.getElementById('emergency-text')) {
+                document.getElementById('emergency-text').value = '';
+            }
+
+            transcript = '';
+            if (voiceTranscript) {
+                voiceTranscript.style.display = 'none';
+            }
+            if (submitVoiceBtn) {
+                submitVoiceBtn.style.display = 'none';
+            }
+            if (recordingStatus) {
+                recordingStatus.textContent = 'Click to start recording';
+            }
+            if (recordBtn) {
+                recordBtn.classList.remove('recording');
+            }
+
+            if (isRecording && mediaRecorder) {
+                mediaRecorder.stop();
+                isRecording = false;
+            }
+        }
+
+        async function toggleRecording() {
+            if (!isRecording) {
+                try {
+                    const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+                    audioChunks = [];
+                    mediaRecorder = new MediaRecorder(stream);
+
+                    mediaRecorder.ondataavailable = (event) => {
+                        audioChunks.push(event.data);
+                    };
+
+                    mediaRecorder.onstop = () => {
+                        // In a real application, you would send the audio to a speech-to-text service
+                        // For this demo, we'll simulate receiving a transcript
+                        simulateTranscription();
+                    };
+
+                    mediaRecorder.start();
+                    isRecording = true;
+                    recordBtn.classList.add('recording');
+                    recordingStatus.textContent = 'Recording... Click to stop';
+
+                } catch (err) {
+                    console.error('Error accessing microphone:', err);
+                    alert('Unable to access your microphone. Please check permissions or try text input instead.');
+                }
+            } else {
+                mediaRecorder.stop();
+                const tracks = mediaRecorder.stream.getTracks();
+                tracks.forEach(track => track.stop());
+                isRecording = false;
+                recordBtn.classList.remove('recording');
+                recordingStatus.textContent = 'Processing your speech...';
+            }
+        }
+
+        function simulateTranscription() {
+            setTimeout(() => {
+                const emergencyPhrases = [
+                    "I've fallen and can't get up",
+                    "I think someone is following me",
+                    "There's smoke coming from the apartment next door",
+                    "I'm feeling chest pain and shortness of breath",
+                    "There's been a car accident outside my house"
+                ];
+
+                transcript = emergencyPhrases[Math.floor(Math.random() * emergencyPhrases.length)];
+
+                transcriptText.textContent = transcript;
+                voiceTranscript.style.display = 'block';
+                submitVoiceBtn.style.display = 'block';
+                recordingStatus.textContent = 'Recording complete';
+            }, 1500);
+        }
+
+        function analyzeEmergency(text) {
+            goToScreen('analysis-screen');
+
+            fetch('/emergency-helper/sos', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    user_id: 'current-user',
+                    input_type: currentScreen === 'voice-input-screen' ? 'audio' : 'text',
+                    content: text
+                }),
+            })
+            .then(response => response.json())
+            .then(data => {
+                const riskLevel = data.risk_level.toLowerCase();
+                const riskPercentage = data.risk_score;
+
+                displayResults(riskLevel, riskPercentage, text, data.recommended_action);
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                const highRiskKeywords = ['heart', 'breathing', 'attack', 'gun', 'blood', 'unconscious', 'dying'];
+                const mediumRiskKeywords = ['pain', 'accident', 'hurt', 'fire', 'smoke', 'following', 'scared', 'injury'];
+
+                const lowercaseText = text.toLowerCase();
+                let riskLevel = 'low';
+                let riskPercentage = 30;
+
+                if (highRiskKeywords.some(keyword => lowercaseText.includes(keyword))) {
+                    riskLevel = 'high';
+                    riskPercentage = 90;
+                } else if (mediumRiskKeywords.some(keyword => lowercaseText.includes(keyword))) {
+                    riskLevel = 'medium';
+                    riskPercentage = 60;
+                }
+
+                displayResults(riskLevel, riskPercentage, text);
+            });
+        }
+
+        function displayResults(riskLevel, percentage, text, recommendedActions = null) {
+            goToScreen('results-screen');
+
+            const riskText = document.getElementById('risk-text');
+            riskText.textContent = `Risk Level: ${riskLevel.toUpperCase()}`;
+            riskText.className = 'risk-text';
+            riskText.classList.add(`${riskLevel}-risk`);
+
+            const riskMeter = document.getElementById('risk-level');
+            riskMeter.style.width = `${percentage}%`;
+
+            if (riskLevel === 'low') {
+                riskMeter.style.backgroundColor = '#28a745';
+            } else if (riskLevel === 'medium') {
+                riskMeter.style.backgroundColor = '#ffc107';
+            } else {
+                riskMeter.style.backgroundColor = '#dc3545';
+            }
+
+            const recommendationList = document.getElementById('recommendation-list');
+            recommendationList.innerHTML = '';
+
+            let recommendations = [];
+
+            if (recommendedActions && Array.isArray(recommendedActions)) {
+                recommendations = recommendedActions;
+            } else {
+                if (riskLevel === 'high') {
+                    recommendations = [
+                        "Call emergency services (911) immediately",
+                        "Stay on the line with emergency services until help arrives",
+                        "If possible, send your exact location through the app",
+                        "Follow any instructions given by emergency personnel"
+                    ];
+                } else if (riskLevel === 'medium') {
+                    recommendations = [
+                        "Consider calling emergency services (911)",
+                        "If safe to do so, move to a more secure location",
+                        "Contact a trusted friend or family member",
+                        "Keep your phone with you and stay alert"
+                    ];
+                } else {
+                    recommendations = [
+                        "Stay calm and assess the situation",
+                        "Consider contacting a friend or family member",
+                        "Use available resources to address your concern",
+                        "Continue monitoring the situation and escalate if needed"
+                    ];
+                }
+            }
+
+            recommendations.forEach(rec => {
+                const li = document.createElement('li');
+                li.textContent = rec;
+                recommendationList.appendChild(li);
+            });
+
+            if (riskLevel === 'high') {
+                sendSosAlert(text, riskLevel, percentage);
+            }
+        }
+
+        function sendSosAlert(message, riskLevel, riskScore) {
+            fetch('/emergency-helper/send_sos', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    message: message,
+                    risk_level: riskLevel,
+                    risk_score: riskScore,
+                    timestamp: new Date().toISOString()
+                }),
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log('SOS alert sent:', data);
+            })
+            .catch(error => {
+                console.error('Error sending SOS alert:', error);
+            });
+        }
+    </script>
+</body>
+</html>
