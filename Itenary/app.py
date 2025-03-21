@@ -11,8 +11,6 @@ from io import BytesIO
 from docx.shared import Inches
 from dotenv import load_dotenv
 from docx.shared import Pt
-from docx.oxml.ns import qn
-from docx.oxml import OxmlElement
 from Itenary.modules.constants import VALID_LOCATIONS
 
 load_dotenv()
@@ -25,7 +23,7 @@ db = None
 
 # Helper function to load activities
 def load_location_activities():
-    df = pd.read_csv('./data/Location_and_Activities (FINAL).csv', encoding='latin-1')
+    df = pd.read_csv('Itenary/data/Itinerary Builder Dataset (FINAL).csv', encoding='latin-1')
     location_activities = {}
     for _, row in df.iterrows():
         activities = [a.strip() for a in row['Activity'].split(',')]
@@ -74,12 +72,12 @@ def index():
         except Exception as e:
             print(f"Error processing request: {str(e)}")
             error_message = "An error occurred while processing your request. Please try again."
-            return render_template('index.html', 
+            return render_template('itr_index.html', 
                                  error=error_message, 
                                  locations=sorted([loc.title() for loc in VALID_LOCATIONS]))
     
     # GET request
-    return render_template('index.html', 
+    return render_template('itr_index.html', 
                          locations=sorted([loc.title() for loc in VALID_LOCATIONS]))
 
 @itinerary_blueprint.route('/generate', methods=['POST'])
@@ -135,7 +133,7 @@ def generate():
         itinerary_data = generator.generate_itinerary(prompt)
         
         # Create Word document with tables
-        doc = Document('resources/template.docx')
+        doc = Document('Itenary/resources/template.docx')
         
         # Set default font to Calibri for the entire document
         style = doc.styles['Normal']
@@ -220,7 +218,7 @@ def generate():
                             run.font.name = 'Calibri'
                     
         # Add additional content from another document
-        additional_doc = Document('./resources/additional_details.docx')
+        additional_doc = Document('Itenary/resources/additional_details.docx')
         for element in additional_doc.element.body:
             doc.element.body.append(element)   
 

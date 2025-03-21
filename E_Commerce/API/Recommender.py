@@ -1,11 +1,7 @@
-import pandas as pd
 from sklearn.metrics.pairwise import cosine_similarity
 import pandas as pd
-import seaborn as sns
-import matplotlib.pyplot as plt
 from sklearn.preprocessing import OneHotEncoder
-import numpy as np
-from sklearn.metrics import confusion_matrix, ConfusionMatrixDisplay
+
 
 
 class Recommender:

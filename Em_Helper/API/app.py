@@ -1,6 +1,6 @@
 from flask import Blueprint, request, jsonify
-from database import save_sos_alert
-from risk_analysis import evaluate_risk, determine_action
+from Em_Helper.API.database import save_sos_alert
+from Em_Helper.API.risk_analysis import evaluate_risk, determine_action
 
 sos_blueprint = Blueprint('sos_blueprint', __name__)
 

@@ -12,7 +12,7 @@
       <h3 class="mb-0">Plan Your Journey</h3>
     </div>
     <div class="card-body">
-      <form method="POST" id="plannerForm" onsubmit="handleFormSubmit(event)">
+      <form method="POST" action="{{ url_for('itinerary.index') }}" id="plannerForm" onsubmit="handleFormSubmit(event)">
         <!-- Travel Dates Section -->
         <div class="section-container mb-4">
           <h4 class="section-title">Travel Dates</h4>
@@ -170,7 +170,7 @@
       "Analyzing your travel preferences...",
       "We're creating personalized recommendations based on your input."
     );
-    event.target.submit();
+    setTimeout(() => event.target.submit(), 500);
   }
 </script>
 {% endblock %}
