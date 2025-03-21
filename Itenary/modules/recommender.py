@@ -15,8 +15,8 @@ class TourismRecommender:
 
     def load_and_preprocess_data(self, dataset_path, location_activities_path):
         # Load datasets
-        df = pd.read_csv("data\Itinerary Builder Dataset (FINAL).csv", encoding='latin-1')
-        location_activities_df = pd.read_csv("data\Location_and_Activities (FINAL).csv", encoding='latin-1')
+        df = pd.read_csv("Itenary/data/Itinerary Builder Dataset (FINAL).csv", encoding='latin-1')
+        location_activities_df = pd.read_csv("Itenary/data/Location_and_Activities (FINAL).csv", encoding='latin-1')
 
         # Create location-activities dictionary
         for _, row in location_activities_df.iterrows():
@@ -165,8 +165,8 @@ def create_integrated_recommender(extracted_info_str):
 
     # Load and preprocess data
     recommender.load_and_preprocess_data(
-        "data/Itinerary Builder Dataset (FINAL).csv",
-        "data/Location_and_Activities (FINAL).csv"
+        "Itenary/data/Itinerary Builder Dataset (FINAL).csv",
+        "Itenary/data/Location_and_Activities (FINAL).csv"
     )
 
     # Generate recommendations for each location
