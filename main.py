@@ -13,12 +13,13 @@ app.secret_key = 'key'
 app.register_blueprint(li_blueprint, url_prefix='/location-identification')
 app.register_blueprint(frontend_blueprint, url_prefix='/auth')
 app.register_blueprint(EC_blueprint, url_prefix='/recommendation')
-app.register_blueprint(itinerary_blueprint, url_prefix='/itinerary') 
+app.register_blueprint(itinerary_blueprint, url_prefix='/itinerary')
 app.register_blueprint(sos_blueprint, url_prefix='/emergency-helper')
 
 
 # MongoDB Connection
-client = MongoClient('mongodb+srv://admin:admindsgp66@dsgp.e5yrm.mongodb.net/?ssl=true&tlsAllowInvalidCertificates=true')
+client = MongoClient(
+    'mongodb+srv://admin:admindsgp66@dsgp.e5yrm.mongodb.net/?ssl=true&tlsAllowInvalidCertificates=true')
 db = client['travelmateai']
 
 # db assignment
@@ -33,22 +34,26 @@ sos_blueprint.db = db
 def home():
     return render_template('landing.html')
 
+
 @app.route('/li.home')
 def feature1():
     return render_template('li.html')
+
 
 @app.route('/EC.home')
 def feature2():
     return render_template('EC.html')
 
-@app.route('/itinerary.home')
+
+@app.route('/itinerary.home', methods=['GET', 'POST'])
 def feature3():
-    return render_template('base.html')
+    return render_template('itr_index.html')
 
 
-@app.route('/emergency-helper.home') 
+@app.route('/emergency-helper.home')
 def feature4():
-    return render_template('emergency_helper.html')
+    return render_template('sos.html')
+
 
 if __name__ == '__main__':
     app.run(debug=True)

@@ -7,7 +7,7 @@ import os
 
 class Image_Identification:
     current_directory = os.path.dirname(os.path.realpath(__file__))
-    model_path = os.path.join(current_directory, "best_LI_model_20241125-053014.keras")
+    model_path = os.path.join(current_directory, "LI_version_3_model_tf_2_15_1.keras")
     class_names = ['botanical_gardens', 'galle_fort', 'galleface', 'hortain_plains', 'mirissa_beach', 'ninearch',
                    'pidurangala', 'sigiriya', 'temple_of_tooth', 'yala']
     threshold = 0.5
