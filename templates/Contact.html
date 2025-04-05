@@ -23,7 +23,7 @@
 
     <!-- Spinner Start -->
     <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
-        <div class="spinner-border text-primary" style="width: 3rem; height: 3rem;" >
+        <div class="spinner-border" style="width: 3rem; height: 3rem; color: var(--primary); border-color: var(--primary);">
         </div>
     </div>
     <!-- Spinner End -->
@@ -32,8 +32,12 @@
     <div class="container-fluid position-relative p-0">
         <nav class="navbar navbar-expand-lg navbar-light px-4 px-lg-5 py-3 py-lg-0">
             <a href="" class="navbar-brand p-0">
-                <h1 class="text-primary m-0"><i class="fa fa-map-marker-alt me-3"></i>Travel Mate</h1>
-                <!-- <img src="img/logo.png" alt="Logo"> -->
+                <div style="height: 40px;">
+                 <svg width="437" height="85" viewBox="0 0 437 85" fill="none" xmlns="http://www.w3.org/2000/svg">
+                 <path d="M9.6 36V6.72H0.528V0.239997H25.968V6.72H17.04V36H9.6ZM32.6524 36V0.239997H46.3324C48.7964 0.239997 50.9724 0.671997 52.8604 1.536C54.7804 2.4 56.2844 3.68 57.3724 5.376C58.4604 7.072 59.0044 9.168 59.0044 11.664C59.0044 14.096 58.4444 16.176 57.3244 17.904C56.2044 19.6 54.7004 20.88 52.8124 21.744L60.9724 36H52.6204L43.7884 20.208L48.5884 23.04H40.0924V36H32.6524ZM40.0924 16.56H46.3804C47.4364 16.56 48.3484 16.352 49.1164 15.936C49.8844 15.52 50.4764 14.944 50.8924 14.208C51.3404 13.472 51.5644 12.624 51.5644 11.664C51.5644 10.672 51.3404 9.808 50.8924 9.072C50.4764 8.336 49.8844 7.76 49.1164 7.344C48.3484 6.928 47.4364 6.72 46.3804 6.72H40.0924V16.56ZM65.028 36L77.124 0.239997H87.012L99.108 36H90.996L88.596 28.704H75.492L73.092 36H65.028ZM77.556 22.224H86.532L81.06 5.328H83.076L77.556 22.224ZM113.502 36L101.262 0.239997H109.422L118.638 28.944H117.006L126.222 0.239997H134.382L122.142 36H113.502ZM141.074 36V0.239997H165.122V6.72H148.514V14.832H164.162V21.312H148.514V29.52H165.122V36H141.074ZM172.34 36V0.239997H179.78V29.52H194.9V36H172.34ZM201.59 36V0.239997H208.79L222.182 18H218.822L231.83 0.239997H239.03V36H231.59V8.448L234.566 9.12L220.79 26.88H219.83L206.534 9.12L209.03 8.448V36H201.59ZM245.731 36L257.827 0.239997H267.715L279.811 36H271.699L269.299 28.704H256.195L253.795 36H245.731ZM258.259 22.224H267.235L261.763 5.328H263.779L258.259 22.224ZM290.569 36V6.72H281.497V0.239997H306.937V6.72H298.009V36H290.569ZM313.621 36V0.239997H337.669V6.72H321.061V14.832H336.709V21.312H321.061V29.52H337.669V36H313.621ZM353.872 36L365.968 0.239997H375.856L387.952 36H379.84L377.44 28.704H364.336L361.936 36H353.872ZM366.4 22.224H375.376L369.904 5.328H371.92L366.4 22.224ZM394.668 36V0.239997H402.108V36H394.668Z"
+                      fill="var(--primary)"/>
+                 </svg>
+                </div>
             </a>
 
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
@@ -43,19 +47,18 @@
             <div class="collapse navbar-collapse" id="navbarCollapse">
                 <div class="navbar-nav ms-auto py-0">
                     <a href="Main.html" class="nav-item nav-link ">Home</a>
-                    <a href="About.html" class="nav-item nav-link ">About</a>
+                    <a href="About.html" class="nav-item nav-link">About</a>
                     <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Services</a>
                         <div class="dropdown-menu m-0">
-                            <a href="" class="dropdown-item">location Identification</a>
-                            <a href="" class="dropdown-item">Travel plan itenary</a>
-                            <a href="" class="dropdown-item">Accomodation</a>
-                            <a href="" class="dropdown-item">Helper</a>
+                            <a href="{{ url_for('feature1') }}" class="dropdown-item">Location Identification</a>
+                            <a href="{{ url_for('feature3') }}" class="dropdown-item">Travel Plan Itinerary</a>
+                            <a href="{{ url_for('EC.home') }}" class="dropdown-item">Accommodation</a>
+                            <a href="{{ url_for('feature4') }}" class="dropdown-item">Helper</a>
                         </div>
                     </div>
-                    <a href="Contact.html " class="nav-item nav-link active">Contact</a>
+                    <a href="Contact.html" class="nav-item nav-link active ">Contact</a>
                 </div>
-                <a href="" class="btn btn-primary rounded-pill py-2 px-4">Register</a>
             </div>
         </nav>
 
@@ -84,7 +87,7 @@
     <div class="container-xxl py-5">
             <div class="container">
                 <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
-                    <h6 class="section-title bg-white text-center text-primary px-3 fw-bold">CONTACT US</h6>
+                    <h6 class="section-title bg-white text-center px-3 fw-bold" style="color: var(--primary)">CONTACT US</h6>
                     <h1 class="mb-5">Contact For any Query</h1>
                 </div>
 
@@ -93,21 +96,21 @@
                     <h5>Get In Touch</h5>
                     <p class="mb-4">Feel free to get in touch with us if you encounter any problems </p>
                     <div class="d-flex align-items-center mb-4">
-                        <div class="d-flex align-items-center justify-content-center flex-shrink-0 bg-primary" style="width: 50px; height: 50px;">
-                            <i class="fa fa-phone-alt text-white"></i>
+                        <div class="d-flex align-items-center justify-content-center flex-shrink-0" style="width: 50px; height: 50px; background-color: var(--primary);">
+                            <i class="fa fa-phone-alt text-black"></i>
                         </div>
                         <div class="ms-3">
-                            <h5 class="text-primary">Mobile</h5>
-                            <p class="mb-0">+012 345 67890</p>
+                            <h5 style="color: var(--primary)">Mobile</h5>
+                            <p class="mb-0">+94 445 1167</p>
                         </div>
                     </div>
                     <div class="d-flex align-items-center">
-                        <div class="d-flex align-items-center justify-content-center flex-shrink-0 bg-primary" style="width: 50px; height: 50px;">
-                            <i class="fa fa-envelope-open text-white"></i>
+                        <div class="d-flex align-items-center justify-content-center flex-shrink-0 " style="width: 50px; height: 50px; background-color: var(--primary);">
+                            <i class="fa fa-envelope-open text-black"></i>
                         </div>
                         <div class="ms-3">
-                            <h5 class="text-primary">Email</h5>
-                            <p class="mb-0">info@example.com</p>
+                            <h5 style="color: var(--primary)">Email</h5>
+                            <p class="mb-0">TravelMateAI@gmail.com</p>
                         </div>
                     </div>
                 </div>
@@ -117,30 +120,30 @@
                         <div class="row g-3">
                             <div class="col-md-6">
                                 <div class="form-floating">
-                                    <input type="text" class="form-control" id="name" placeholder="Your Name">
+                                    <input type="text" class="form-control contact-form" id="name" placeholder="Your Name">
                                     <label for="name">Your Name</label>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-floating">
-                                    <input type="email" class="form-control" id="email" placeholder="Your Email">
+                                    <input type="email" class="form-control contact-form" id="email" placeholder="Your Email">
                                     <label for="email">Your Email</label>
                                 </div>
                             </div>
                             <div class="col-12">
                                 <div class="form-floating">
-                                    <input type="text" class="form-control" id="subject" placeholder="Subject">
+                                    <input type="text" class="form-control contact-form" id="subject" placeholder="Subject">
                                     <label for="subject">Subject</label>
                                 </div>
                             </div>
                             <div class="col-12">
                                 <div class="form-floating">
-                                    <textarea class="form-control" placeholder="Leave a message here" id="message" style="height: 100px"></textarea>
+                                    <textarea class="form-control contact-form" placeholder="Leave a message here" id="message" style="height: 100px"></textarea>
                                     <label for="message">Message</label>
                                 </div>
                             </div>
                             <div class="col-12">
-                                <button class="btn btn-primary w-100 py-3" type="submit">Send Message</button>
+                                <button class="btn w-100 py-3" type="submit" style="background-color: var(--primary)">Send Message</button>
                             </div>
                         </div>
                     </form>
@@ -153,23 +156,17 @@
     <!-- Contact us End -->
 
     <!-- Footer Start -->
+
     <div class="container-fluid bg-dark text-light footer pt-5 mt-5 wow fadeIn" data-wow-delay="0.1s">
         <div class="container py-5">
             <div class="row g-5">
                 <div class="col-lg-3 col-md-6">
                     <h4 class="text-white mb-3">Company</h4>
                     <a class="btn btn-link" href="About.html">About Us</a>
-                    <a class="btn btn-link active " href="Contact.html">Contact Us</a>
+                    <a class="btn btn-link" href="Contact.html">Contact Us</a>
                     <a class="btn btn-link" href="">Privacy Policy</a>
                     <a class="btn btn-link" href="">Terms & Condition</a>
-                    <a class="btn btn-link" href="">FAQs & Help</a>
-                </div>
-                <div class="col-lg-3 col-md-6">
-                    <h4 class="text-white mb-3">Our Team</h4>
-                    <p class="text-white mb-1"><i class="fas fa-user-tie me-2"></i>John Doe</p>
-                    <p class="text-white mb-1"><i class="fas fa-user-tie me-2"></i>John Doe</p>
-                    <p class="text-white mb-1"><i class="fas fa-user-tie me-2"></i>John Doe</p>
-                    <p class="text-white mb-1"><i class="fas fa-user-tie me-2"></i>John Doe</p>
+                    <a class="btn btn-link"href="">FAQs & Help</a>
                 </div>
 
                 <div class="col-lg-3 col-md-6">
@@ -183,9 +180,20 @@
                 </div>
                 <div class="col-lg-3 col-md-6">
                     <h4 class="text-white mb-3">Contact</h4>
-                    <p class="mb-2"><i class="fa fa-map-marker-alt me-3"></i>123 Street, New York, USA</p>
-                    <p class="mb-2"><i class="fa fa-phone-alt me-3"></i>+012 345 67890</p>
-                    <p class="mb-2"><i class="fa fa-envelope me-3"></i>info@example.com</p>
+                    <p class="mb-2"><i class="fa fa-map-marker-alt me-3"></i>IIT, Bambalapitiya, Colombo</p>
+                    <p class="mb-2"><i class="fa fa-phone-alt me-3"></i>+94 445 1167</p>
+                    <p class="mb-2"><i class="fa fa-envelope me-3"></i>TravelMateAI@gmail.com</p>
+                </div>
+
+                <div class="col-lg-3 col-md-6">
+                    <h4 class="text-white mb-3">Newsletter</h4>
+                    <p>Sign up for our newsletter where you can get daily updates and more.</p>
+                    <div class="position-relative mx-auto" style="max-width: 400px;">
+                        <label>
+                            <input class="form-control newsletter-input w-100 py-3 ps-4 pe-5" type="text" placeholder="Your email">
+                        </label>
+                        <button type="button" class="btn btn-primary-custom py-2 position-absolute top-0 end-0 mt-2 me-2">SignUp</button>
+                    </div>
                 </div>
 
             </div>
@@ -208,11 +216,10 @@
             </div>
         </div>
     </div>
-    <!-- Footer End -->
-
+ <!-- Footer end -->
 
     <!-- Back to Top -->
-    <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
+    <a href="#" class="btn btn-lg btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
 
 
     <!-- JavaScript Libraries -->
