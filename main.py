@@ -54,6 +54,14 @@ def feature3():
 def feature4():
     return render_template('sos.html')
 
+@app.route('/about', endpoint='about')
+def about():
+    return render_template('About.html')
+
+@app.route('/contact', endpoint='contact')
+def contact():
+    return render_template('Contact.html')
+
 
 if __name__ == '__main__':
     app.run(debug=True)
